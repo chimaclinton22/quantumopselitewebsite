@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform — QUANTUM OPS ELITE</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <style>
+    :root {
+      --bg-primary: #020617;
+      --bg-deep: #01030A;
+      --bg-secondary: #0F172A;
+      --bg-card: rgba(15, 23, 42, 0.72);
+      --brand-primary: #14B8A6;
+      --bright-cyan: #22D3EE;
+      --secondary-blue: #3B82F6;
+      --glow-cyan: rgba(20, 184, 166, 0.25);
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --border: rgba(148, 163, 184, 0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+    body { background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
+    
+    /* Nav */
+    nav { position: fixed; top: 0; width: 100%; height: 80px; background: rgba(2,6,23,0.72); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 40px; z-index: 100; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-primary); font-weight: 800; font-size: 14px; letter-spacing: 1px; }
+    .brand-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--brand-primary), var(--bright-cyan)); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--bg-primary); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--bright-cyan); }
+    
+    /* Layout */
+    .container { max-width: 1200px; margin: 120px auto 60px; padding: 0 20px; }
+    .header { text-align: center; margin-bottom: 50px; }
+    .header h1 { font-size: 44px; margin-bottom: 16px; font-weight: 800; }
+    .header p { color: var(--text-secondary); font-size: 18px; max-width: 700px; margin: 0 auto; }
+    
+    /* App Interactive Interface */
+    .app-viewport { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; backdrop-filter: blur(20px); box-shadow: 0 0 50px var(--glow-cyan); }
+    .tabs { display: flex; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 16px; overflow-x: auto; margin-bottom: 32px; }
+    .tab-btn { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--brand-primary); color: var(--bg-primary); border-color: var(--brand-primary); }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .card h3 { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card .val { font-size: 28px; font-weight: 700; color: var(--bright-cyan); }
+    
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--brand-primary), var(--bright-cyan)); color: var(--bg-primary); padding: 14px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">QO</div>
+      <div>QUANTUM OPS <span style="color:var(--bright-cyan)">ELITE</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="platform.html" class="active">Platform</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="academy.html">Academy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>THE OPERATING SYSTEM FOR YOUR BUSINESS</h1>
+      <p>Everything you need to understand, control, and grow your business from one intelligent platform.</p>
+    </div>
+
+    <div class="app-viewport">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+        <button class="tab-btn" onclick="switchTab('sales')">Sales & Revenue</button>
+        <button class="tab-btn" onclick="switchTab('inventory')">Inventory & Stock</button>
+        <button class="tab-btn" onclick="switchTab('analytics')">AI Insights</button>
+      </div>
+
+      <div id="overview" class="tab-content active">
+        <div class="metrics-grid">
+          <div class="card"><h3>Active System Status</h3><div class="val">Live Sync</div></div>
+          <div class="card"><h3>Monitored Entities</h3><div class="val">1,420</div></div>
+          <div class="card"><h3>Real-time Throughput</h3><div class="val">99.98%</div></div>
+        </div>
+      </div>
+
+      <div id="sales" class="tab-content">
+        <div class="metrics-grid">
+          <div class="card"><h3>Daily Volume</h3><div class="val">₦3,820,000</div></div>
+          <div class="card"><h3>Completed Orders</h3><div class="val">284</div></div>
+        </div>
+      </div>
+
+      <div id="inventory" class="tab-content">
+        <div class="metrics-grid">
+          <div class="card"><h3>Total SKU Count</h3><div class="val">842</div></div>
+          <div class="card"><h3>Low Stock Alerts</h3><div class="val" style="color:#F59E0B">4 Items</div></div>
+        </div>
+      </div>
+
+      <div id="analytics" class="tab-content">
+        <div class="metrics-grid">
+          <div class="card"><h3>AI Optimization Index</h3><div class="val">98.4%</div></div>
+          <div class="card"><h3>Predicted Growth</h3><div class="val">+22.5%</div></div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="contact.html" class="cta-btn">DEPLOY PLATFORM FOR YOUR BUSINESS</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
