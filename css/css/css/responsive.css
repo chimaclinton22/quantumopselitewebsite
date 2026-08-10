@@ -1,70 +1,81 @@
 /* ==========================================================================
-   QUANTUM OPS ELITE — RESPONSIVE LAYOUTS & BREAKPOINTS
+   QUANTUM OPS ELITE — RESPONSIVE MEDIA QUERIES & BREAKPOINTS
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. TABLET & LAPTOP LAYOUTS (Max-Width: 1024px)
+   1. TABLET BREAKPOINT (max-width: 1024px)
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .section-padding {
-    padding: 4.5rem 0;
+    padding: 5rem 1.25rem;
   }
 
-  /* Grid Layout Adjustments */
+  .section-title {
+    font-size: 2.15rem;
+  }
+
+  /* Hero Section Adjustment */
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  /* Grid Conversions */
+  .flagship-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
   .services-grid,
-  .portfolio-grid,
-  .academy-grid {
+  .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .pillars-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .tech-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .flagship-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .dash-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  /* Dashboard Visual Adjustments */
+  .dash-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* --------------------------------------------------------------------------
-   2. MOBILE LANDSCAPE & SMALL TABLETS (Max-Width: 768px)
+   2. MOBILE BREAKPOINT — PHONES & SMALL TABLETS (max-width: 768px)
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  /* Navigation */
   .desktop-nav {
     display: none;
   }
 
   .mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
   }
 
-  .hidden-mobile {
-    display: none !important;
-  }
-
+  /* Typography & Hero */
   .hero-section {
-    padding-top: 7.5rem;
-    padding-bottom: 4rem;
+    padding-top: 8rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .hero-subhead {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
   }
 
   .hero-cta-group {
@@ -76,21 +87,15 @@
     width: 100%;
   }
 
+  /* Grids Stack Vertically */
   .services-grid,
   .portfolio-grid,
-  .academy-grid,
-  .testimonials-grid,
-  .pillars-grid {
-    grid-template-columns: 1fr;
-  }
-
   .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .form-grid-2 {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
   .footer-grid {
@@ -98,64 +103,33 @@
     gap: 2rem;
   }
 
-  .dashboard-header {
-    font-size: 0.75rem;
-  }
-
-  .window-title {
-    display: none;
-  }
-
-  .modal-card {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .demo-tabs {
-    justify-content: flex-start;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   3. SMALL MOBILE PHONES (Max-Width: 480px / 390px Viewports)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .section-container {
-    padding: 0 1rem;
-  }
-
-  .section-title {
-    font-size: 1.75rem;
-  }
-
-  .section-description {
-    font-size: 0.95rem;
-  }
-
-  .hero-title {
-    font-size: 2.15rem;
+  /* Dashboard Mockup Mobile Optimizations */
+  .dashboard-body {
+    padding: 1rem;
   }
 
   .dash-grid-4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
-  .form-card {
-    padding: 1.5rem 1rem;
+  .dash-card {
+    padding: 0.75rem;
   }
 
-  .modal-header {
-    padding: 1rem 1.25rem;
+  .dash-value {
+    font-size: 1.1rem;
   }
 
-  .demo-body {
-    padding: 1.25rem;
+  .chart-bars {
+    height: 90px;
   }
 
-  .tech-grid {
-    grid-template-columns: 1fr;
+  .bar {
+    width: 16px;
   }
 
+  /* Floating WhatsApp Adjustments */
   .whatsapp-float {
     bottom: 1.25rem;
     right: 1.25rem;
@@ -166,5 +140,26 @@
   .whatsapp-icon {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. SMALL MOBILE DEVICES (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .section-padding {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .dash-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-pill {
+    font-size: 0.7rem;
   }
 }
