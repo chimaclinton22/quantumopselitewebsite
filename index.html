@@ -3,825 +3,508 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantum OPS Elite | Digital Systems, Business Software & Technology Solutions</title>
-  <meta name="description" content="Quantum OPS Elite builds powerful business websites, dashboards, software systems, AI solutions and digital products designed to help businesses operate smarter and grow." />
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <title>QUANTUM OPS ELITE — Next-Generation Business Software</title>
   <style>
-    /* ========== DESIGN SYSTEM ========== */
     :root {
-      --bg-primary: #07070F;
-      --bg-secondary: #0B0B16;
-      --bg-elevated: #101022;
-      --bg-card: #121224;
-      --bg-input: #16162D;
-      --purple-primary: #6C5CE7;
-      --purple-secondary: #7C3AED;
-      --purple-bright: #A78BFA;
-      --purple-soft: #C4B5FD;
+      --bg-primary: #020617;
+      --bg-deep: #01030A;
+      --bg-secondary: #0F172A;
+      --bg-card: rgba(15, 23, 42, 0.72);
+      --brand-primary: #14B8A6;
+      --brand-dark: #0D9488;
+      --bright-cyan: #22D3EE;
+      --secondary-blue: #3B82F6;
+      --glow-cyan: rgba(20, 184, 166, 0.25);
+      --glow-blue: rgba(59, 130, 246, 0.18);
       --text-primary: #F8FAFC;
       --text-secondary: #CBD5E1;
       --text-muted: #94A3B8;
-      --text-very-muted: #64748B;
-      --border-primary: rgba(139, 92, 246, 0.18);
-      --border-strong: rgba(139, 92, 246, 0.35);
-      --success: #34D399;
-      --warning: #FBBF24;
-      --danger: #FB7185;
-      --gradient-primary: linear-gradient(135deg, #6C5CE7, #4F46E5);
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 20px;
-      --radius-2xl: 24px;
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --border: rgba(148, 163, 184, 0.12);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
     body {
-      font-family: var(--font);
-      background: var(--bg-primary);
+      background-color: var(--bg-primary);
       color: var(--text-primary);
-      line-height: 1.6;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      position: relative;
     }
-    img, svg { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    button, input, textarea, select {
-      font: inherit; color: inherit; border: none; background: none; outline: none;
+
+    /* Ambient Background Layers */
+    #canvas-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
     }
-    button { cursor: pointer; }
 
-    h1, h2, h3, h4 { font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; }
-    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
-    h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
-    h3 { font-size: clamp(1.3rem, 3vw, 1.7rem); }
-    p { color: var(--text-secondary); font-size: 1.05rem; }
+    .aurora-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 20% 20%, var(--glow-cyan) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, var(--glow-blue) 0%, transparent 40%);
+      filter: blur(60px);
+      animation: auroraMove 20s ease-in-out infinite alternate;
+    }
 
-    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
-    .section { padding: 5rem 0; position: relative; }
-    .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
-    .section-header h2 { margin-bottom: 1rem; }
-    .section-header p { font-size: 1.1rem; }
+    @keyframes auroraMove {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.1) translate(-2%, 2%); }
+      100% { transform: scale(1) translate(2%, -2%); }
+    }
 
-    /* Buttons */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.15;
+    }
+
+    /* Layout Components */
+    header, section, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Fixed Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--brand-primary), var(--bright-cyan));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--bg-primary);
+      font-size: 16px;
+    }
+
+    .brand-text {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      color: var(--bright-cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--bright-cyan);
+    }
+
+    .nav-ctas {
+      display: flex;
+      gap: 16px;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      padding: 0.85rem 1.7rem; font-weight: 600; font-size: 0.95rem;
-      border-radius: var(--radius-md); transition: all 0.25s ease; white-space: nowrap;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.5px;
     }
+
     .btn-primary {
-      background: var(--gradient-primary); color: white;
-      box-shadow: 0 4px 16px rgba(108, 92, 231, 0.35);
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px var(--glow-cyan);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108, 92, 231, 0.45); }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
+      transform: translateY(-1px);
+    }
+
     .btn-secondary {
-      background: rgba(108, 92, 231, 0.08); color: var(--text-primary);
-      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
     }
-    .btn-secondary:hover { background: rgba(108, 92, 231, 0.15); border-color: var(--purple-bright); transform: translateY(-2px); }
-    .btn-ghost { background: transparent; color: var(--text-secondary); }
-    .btn-ghost:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
-    .btn-lg { padding: 1.1rem 2.2rem; font-size: 1rem; border-radius: var(--radius-lg); }
-    .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.875rem; }
 
-    /* Forms */
-    .form-group { margin-bottom: 1.2rem; }
-    .form-label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.45rem; }
-    .form-input, .form-textarea, .form-select {
-      width: 100%; padding: 0.85rem 1rem; background: var(--bg-input);
-      border: 1px solid var(--border-primary); border-radius: var(--radius-md);
-      color: var(--text-primary); transition: border-color 0.2s, box-shadow 0.2s;
+    .btn-secondary:hover {
+      border-color: var(--brand-primary);
+      color: var(--bright-cyan);
     }
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
-      border-color: var(--purple-primary); box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-    }
-    .form-textarea { min-height: 110px; resize: vertical; }
-    .form-select { appearance: none; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-status { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); font-size: 0.875rem; display: none; }
-    .form-status.success { display: block; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.3); color: var(--success); }
-    .form-status.error { display: block; background: rgba(251,113,133,0.12); border: 1px solid rgba(251,113,133,0.3); color: var(--danger); }
 
-    /* Navbar */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 1rem 0; transition: all 0.25s ease; background: transparent;
+    /* Hero Section */
+    .hero {
+      padding: 160px 20px 80px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .navbar.scrolled {
-      background: rgba(7,7,15,0.9); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-primary); padding: 0.7rem 0;
-    }
-    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.1rem; }
-    .logo-mark {
-      width: 32px; height: 32px; background: var(--gradient-primary); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: white;
-    }
-    .nav-links { display: flex; align-items: center; gap: 1.8rem; }
-    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text-primary); }
-    .nav-actions { display: flex; align-items: center; gap: 0.7rem; }
-    .mobile-toggle {
-      display: none; width: 40px; height: 40px; align-items: center; justify-content: center;
-      border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-primary);
-    }
-    .mobile-toggle span, .mobile-toggle span::before, .mobile-toggle span::after {
-      display: block; width: 18px; height: 2px; background: var(--text-primary); position: relative; transition: 0.2s;
-    }
-    .mobile-toggle span::before { content: ''; position: absolute; top: -6px; }
-    .mobile-toggle span::after { content: ''; position: absolute; top: 6px; }
-    .mobile-toggle.active span { background: transparent; }
-    .mobile-toggle.active span::before { top: 0; transform: rotate(45deg); }
-    .mobile-toggle.active span::after { top: 0; transform: rotate(-45deg); }
 
-    .mobile-menu {
-      position: fixed; inset: 0; background: rgba(7,7,15,0.97); backdrop-filter: blur(20px);
-      z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4rem;
-      opacity: 0; visibility: hidden; transition: 0.25s;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--bright-cyan);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .mobile-menu.open { opacity: 1; visibility: visible; }
-    .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: var(--text-secondary); }
-    .mobile-menu a:hover { color: var(--text-primary); }
 
-    /* Hero */
-    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 6rem; padding-bottom: 4rem; position: relative; overflow: hidden; }
-    .hero-content { max-width: 620px; position: relative; z-index: 10; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem;
-      background: rgba(108,92,231,0.12); border: 1px solid var(--border-primary); border-radius: 999px;
-      font-size: 0.8rem; font-weight: 500; color: var(--purple-soft); margin-bottom: 1.4rem;
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--bright-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--bright-cyan);
     }
-    .hero h1 {
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, #F8FAFC 0%, #C4B5FD 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-sub { font-size: 1.2rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; }
-    .hero-desc { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 520px; }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.2rem; }
-    .hero-trust { display: flex; flex-wrap: wrap; gap: 0.7rem 1.4rem; font-size: 0.875rem; color: var(--text-very-muted); }
-    .hero-trust span { display: flex; align-items: center; gap: 0.35rem; }
-    .hero-trust span::before { content: ''; width: 6px; height: 6px; background: var(--purple-primary); border-radius: 50%; opacity: 0.7; }
 
+    .hero-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .text-gradient {
+      background: linear-gradient(90deg, var(--brand-primary), var(--bright-cyan), var(--secondary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto 36px auto;
+      line-height: 1.6;
+    }
+
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    /* Dashboard Visual Placeholder/Mockup */
     .hero-visual {
-      position: absolute; right: -4%; top: 50%; transform: translateY(-50%);
-      width: 52%; max-width: 640px; z-index: 5;
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--glow-cyan);
+      margin-top: 40px;
     }
-    .dashboard-mock {
-      background: var(--bg-elevated); border: 1px solid var(--border-primary); border-radius: var(--radius-2xl);
-      overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 50px rgba(108,92,231,0.12);
-    }
-    .dash-header {
-      display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.2rem;
-      background: var(--bg-card); border-bottom: 1px solid var(--border-primary);
-    }
-    .dash-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dash-dot.red { background: #FB7185; }
-    .dash-dot.yellow { background: #FBBF24; }
-    .dash-dot.green { background: #34D399; }
-    .dash-title { margin-left: 0.7rem; font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
-    .dash-body { padding: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-    .dash-card { background: var(--bg-card); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: 1rem; }
-    .dash-card.wide { grid-column: span 2; }
-    .dash-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    .dash-value { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
-    .dash-value.accent { color: var(--purple-bright); }
-    .dash-value.positive { color: var(--success); }
-    .dash-chart { height: 55px; margin-top: 0.7rem; display: flex; align-items: flex-end; gap: 4px; }
-    .dash-bar { flex: 1; background: var(--gradient-primary); border-radius: 3px 3px 0 0; opacity: 0.75; }
 
-    /* Cards & Grids */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: left;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Content Sections */
+    .section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
     .service-card {
-      background: var(--bg-card); border: 1px solid var(--border-primary); border-radius: var(--radius-xl);
-      padding: 1.8rem; transition: all 0.25s ease; height: 100%; display: flex; flex-direction: column;
-    }
-    .service-card:hover { border-color: var(--border-strong); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .service-icon {
-      width: 46px; height: 46px; background: rgba(108,92,231,0.12); border: 1px solid var(--border-primary);
-      border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.1rem; color: var(--purple-bright);
-    }
-    .service-icon svg { width: 22px; height: 22px; }
-    .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-    .service-card p { font-size: 0.92rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.1rem; }
-    .service-link { font-size: 0.875rem; font-weight: 600; color: var(--purple-bright); }
-
-    .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; }
-    .pillar-card {
-      text-align: center; padding: 1.8rem 1.3rem; background: var(--bg-card);
-      border: 1px solid var(--border-primary); border-radius: var(--radius-xl); transition: 0.25s;
-    }
-    .pillar-card:hover { border-color: var(--border-strong); transform: translateY(-4px); }
-    .pillar-number {
-      font-size: 2.3rem; font-weight: 800; background: var(--gradient-primary);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
     }
 
-    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
-    .portfolio-card {
-      background: var(--bg-card); border: 1px solid var(--border-primary); border-radius: var(--radius-xl);
-      overflow: hidden; transition: 0.25s;
-    }
-    .portfolio-card:hover { border-color: var(--border-strong); transform: translateY(-5px); }
-    .portfolio-image {
-      aspect-ratio: 16/10; background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(79,70,229,0.05));
-      display: flex; align-items: center; justify-content: center; color: var(--purple-soft); font-weight: 500;
-    }
-    .portfolio-body { padding: 1.4rem; }
-    .portfolio-category { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--purple-bright); margin-bottom: 0.4rem; }
-    .portfolio-body h3 { font-size: 1.2rem; margin-bottom: 0.45rem; }
-    .portfolio-body p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.1rem; }
-
-    .request-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.5rem; align-items: start; }
-    .request-form {
-      background: var(--bg-card); border: 1px solid var(--border-primary);
-      border-radius: var(--radius-2xl); padding: 2.3rem;
+    .service-card:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-4px);
     }
 
-    .footer {
-      background: var(--bg-secondary); border-top: 1px solid var(--border-primary);
-      padding: 3.5rem 0 2rem;
+    .service-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--bright-cyan);
     }
-    .footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 2.2rem; margin-bottom: 2.5rem; }
-    .footer-brand p { font-size: 0.92rem; color: var(--text-muted); max-width: 260px; margin-top: 0.8rem; }
-    .footer-col h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 1.1rem; }
-    .footer-col a { display: block; font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.55rem; }
-    .footer-col a:hover { color: var(--text-primary); }
-    .footer-bottom { padding-top: 1.8rem; border-top: 1px solid var(--border-primary); font-size: 0.875rem; color: var(--text-very-muted); }
 
-    .whatsapp-float {
-      position: fixed; bottom: 1.6rem; right: 1.6rem; width: 54px; height: 54px;
-      background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.4); z-index: 900; transition: 0.25s;
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
-    .whatsapp-float:hover { transform: scale(1.08); }
-    .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
 
-    /* Demo Modal */
-    .demo-modal {
-      position: fixed; inset: 0; background: rgba(7,7,15,0.92); backdrop-filter: blur(12px);
-      z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.4rem;
-      opacity: 0; visibility: hidden; transition: 0.25s;
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
     }
-    .demo-modal.open { opacity: 1; visibility: visible; }
-    .demo-modal-content {
-      background: var(--bg-elevated); border: 1px solid var(--border-primary); border-radius: var(--radius-2xl);
-      width: 100%; max-width: 1000px; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column;
-    }
-    .demo-modal-header {
-      display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.4rem;
-      border-bottom: 1px solid var(--border-primary); background: var(--bg-card);
-    }
-    .demo-badge {
-      font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 0.22rem 0.6rem; background: rgba(108,92,231,0.2); color: var(--purple-soft); border-radius: 999px; margin-left: 0.5rem;
-    }
-    .demo-close {
-      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-      border-radius: 8px; background: rgba(255,255,255,0.05); color: var(--text-muted);
-    }
-    .demo-modal-body { flex: 1; overflow: auto; padding: 1.4rem; }
-    .demo-nav { display: flex; gap: 0.5rem; margin-bottom: 1.3rem; flex-wrap: wrap; }
-    .demo-nav-btn {
-      padding: 0.45rem 0.95rem; font-size: 0.875rem; font-weight: 500; border-radius: 8px;
-      background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid transparent;
-    }
-    .demo-nav-btn.active, .demo-nav-btn:hover {
-      background: rgba(108,92,231,0.15); color: var(--text-primary); border-color: var(--border-primary);
-    }
-    .demo-panel { display: none; }
-    .demo-panel.active { display: block; }
 
-    /* Responsive */
-    @media (max-width: 1000px) {
-      .hero-visual { width: 46%; right: -6%; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
-    }
-    @media (max-width: 850px) {
-      .nav-links, .nav-actions { display: none; }
-      .mobile-toggle { display: flex; }
-      .hero { min-height: auto; flex-direction: column; padding-top: 6.5rem; }
-      .hero-content { max-width: 100%; text-align: center; }
-      .hero-desc { margin: 0 auto 2rem; }
-      .hero-ctas { justify-content: center; }
-      .hero-trust { justify-content: center; }
-      .hero-visual { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 480px; margin: 2.5rem auto 0; }
-      .flagship-grid, .request-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 1.1rem; }
-      .section { padding: 3.5rem 0; }
-      .services-grid, .pillars-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-ctas { flex-direction: column; }
-      .hero-ctas .btn { width: 100%; }
-      .request-form { padding: 1.5rem; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .dash-body { grid-template-columns: 1fr; }
-      .dash-card.wide { grid-column: span 1; }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 36px; }
+      .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
+  <canvas id="canvas-bg"></canvas>
+  <div class="aurora-bg"></div>
+  <div class="grid-overlay"></div>
 
-  <!-- Navbar -->
-  <header class="navbar" id="navbar">
-    <div class="container navbar-inner">
-      <a href="#home" class="logo">
-        <span class="logo-mark">Q</span>
-        <span>Quantum OPS Elite</span>
-      </a>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="btn btn-ghost btn-sm" onclick="openDemo()">View Demo</button>
-        <a href="#request" class="btn btn-primary btn-sm">Build With Us</a>
-      </div>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span></button>
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">QO</div>
+      <div class="brand-text">QUANTUM OPS<br><span>ELITE</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="academy.html">Academy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="platform.html" class="btn btn-secondary">Explore Platform</a>
+      <a href="contact.html" class="btn btn-primary">Request a Project</a>
     </div>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" onclick="closeMobile()">Home</a>
-    <a href="#products" onclick="closeMobile()">Products</a>
-    <a href="#solutions" onclick="closeMobile()">Solutions</a>
-    <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-    <a href="#about" onclick="closeMobile()">About</a>
-    <a href="#request" class="btn btn-primary" onclick="closeMobile()">Build With Us</a>
-  </div>
+  </nav>
 
   <main>
-    <!-- Hero -->
-    <section class="hero section" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge">Digital Systems for Modern Business</div>
-          <h1>BUILD SMARTER.<br>OPERATE BETTER.</h1>
-          <p class="hero-sub">Powerful digital systems, business software and technology solutions built around the way your business actually works.</p>
-          <p class="hero-desc">Quantum OPS Elite builds modern business websites, management systems, dashboards, AI-powered tools and digital products designed to make businesses easier to run and easier to grow.</p>
-          <div class="hero-ctas">
-            <a href="#products" class="btn btn-primary btn-lg">Explore Quantum OPS</a>
-            <a href="#request" class="btn btn-secondary btn-lg">Build My Business System</a>
-          </div>
-          <div class="hero-trust">
-            <span>Business Systems</span>
-            <span>Websites</span>
-            <span>Dashboards</span>
-            <span>AI Solutions</span>
-          </div>
-        </div>
+    <section class="hero">
+      <div class="badge">
+        <span class="badge-dot"></span> Next-Generation Business Software
+      </div>
+      <h1 class="hero-title">
+        WE BUILD DIGITAL SYSTEMS THAT MAKE BUSINESSES RUN <span class="text-gradient">SMARTER.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Quantum Ops Elite builds powerful business platforms, custom software, intelligent dashboards, and AI-powered digital systems designed around how your business actually operates.
+      </p>
+      <div class="hero-ctas">
+        <a href="platform.html" class="btn btn-primary">EXPLORE QUANTUM OPS</a>
+        <a href="contact.html" class="btn btn-secondary">BUILD MY SYSTEM</a>
       </div>
 
       <div class="hero-visual">
-        <div class="dashboard-mock">
-          <div class="dash-header">
-            <span class="dash-dot red"></span>
-            <span class="dash-dot yellow"></span>
-            <span class="dash-dot green"></span>
-            <span class="dash-title">Quantum OPS Business Tracker</span>
+        <div class="dashboard-grid">
+          <div class="metric-card">
+            <div class="metric-label">Today's Revenue</div>
+            <div class="metric-value">₦2,450,000</div>
           </div>
-          <div class="dash-body">
-            <div class="dash-card">
-              <div class="dash-label">Revenue</div>
-              <div class="dash-value accent">₦128,450</div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-label">Profit</div>
-              <div class="dash-value positive">₦42,380</div>
-            </div>
-            <div class="dash-card wide">
-              <div class="dash-label">Sales Overview</div>
-              <div class="dash-chart">
-                <div class="dash-bar" style="height:40%"></div>
-                <div class="dash-bar" style="height:65%"></div>
-                <div class="dash-bar" style="height:45%"></div>
-                <div class="dash-bar" style="height:80%"></div>
-                <div class="dash-bar" style="height:55%"></div>
-                <div class="dash-bar" style="height:90%"></div>
-                <div class="dash-bar" style="height:70%"></div>
-                <div class="dash-bar" style="height:50%"></div>
-              </div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-label">Inventory</div>
-              <div class="dash-value">1,842</div>
-            </div>
-            <div class="dash-card">
-              <div class="dash-label">Products</div>
-              <div class="dash-value">247</div>
-            </div>
+          <div class="metric-card">
+            <div class="metric-label">Sales Growth</div>
+            <div class="metric-value">+18.4%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Low Stock Alerts</div>
+            <div class="metric-value">3 Items</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">AI Insights</div>
+            <div class="metric-value">Optimal</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Flagship -->
-    <section class="section" id="products" style="background:var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header">
-          <p style="color:var(--purple-soft);font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.7rem;">The Flagship System</p>
-          <h2>Meet Quantum OPS Business Tracker</h2>
-          <p>A powerful business management system designed to help businesses track inventory, products, sales, costs, stock levels and profitability.</p>
-        </div>
-        <div style="text-align:center;margin-top:2rem;">
-          <button class="btn btn-primary btn-lg" onclick="openDemo()">Explore the Live Demo</button>
-          <a href="#request" class="btn btn-secondary btn-lg" style="margin-left:0.8rem;">Build Something Like This</a>
-        </div>
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">DIGITAL SYSTEMS BUILT AROUND YOUR BUSINESS</h2>
+        <p class="section-subtitle">Engineered for speed, built to scale.</p>
       </div>
-    </section>
-
-    <!-- Solutions -->
-    <section class="section" id="solutions">
-      <div class="container">
-        <div class="section-header">
-          <h2>Digital Systems. Not Just Websites.</h2>
-          <p>We build practical technology that helps businesses understand their operations, save time and grow.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-title">Business Management Systems</div>
+          <div class="service-desc">Inventory, sales, customers, debts, expenses, and automated reporting in one centralized location.</div>
         </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-            <h3>Business Websites</h3>
-            <p>Modern websites designed around the business, brand and customers.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
-            <h3>Custom Dashboards</h3>
-            <p>Real-time dashboards that turn business information into clear insights.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-            <h3>Business Management Systems</h3>
-            <p>Inventory, sales, operations and tracking systems built around your workflow.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-            <h3>E-Commerce</h3>
-            <p>Modern online stores designed for conversion and seamless experience.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/></svg></div>
-            <h3>AI Business Solutions</h3>
-            <p>AI-powered tools that reduce repetitive work and improve decisions.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <h3>Custom Software</h3>
-            <p>Software designed specifically around how your company works.</p>
-            <a href="#request" class="service-link">Learn More →</a>
-          </article>
+        <div class="service-card">
+          <div class="service-title">Custom Web Applications</div>
+          <div class="service-desc">Tailored software built around your exact daily operational workflows and business logic.</div>
         </div>
-      </div>
-    </section>
-
-    <!-- Why -->
-    <section class="section" style="background:var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header">
-          <h2>Your Business Is Unique.<br>Your Software Should Be Too.</h2>
-          <p>Most businesses are forced to adapt to generic software. We build systems around how the business actually operates.</p>
-        </div>
-        <div class="pillars-grid">
-          <div class="pillar-card"><div class="pillar-number">01</div><h3>Understand</h3><p>We understand how your business really works.</p></div>
-          <div class="pillar-card"><div class="pillar-number">02</div><h3>Design</h3><p>We design around your real workflows.</p></div>
-          <div class="pillar-card"><div class="pillar-number">03</div><h3>Build</h3><p>We build and deploy the system ready for use.</p></div>
-          <div class="pillar-card"><div class="pillar-number">04</div><h3>Improve</h3><p>We continue improving as you grow.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio -->
-    <section class="section" id="portfolio">
-      <div class="container">
-        <div class="section-header">
-          <h2>Proof Is Better Than Promises.</h2>
-          <p>Explore what Quantum OPS Elite can build.</p>
-        </div>
-        <div class="portfolio-grid">
-          <article class="portfolio-card">
-            <div class="portfolio-image">Quantum OPS Business Tracker</div>
-            <div class="portfolio-body">
-              <div class="portfolio-category">Business Management / SaaS</div>
-              <h3>Quantum OPS Business Tracker</h3>
-              <p>A modern business tracking system for inventory, sales, costs, stock and profitability.</p>
-              <button class="btn btn-secondary btn-sm" onclick="openDemo()">View Interactive Demo</button>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-image">E-Commerce Concept</div>
-            <div class="portfolio-body">
-              <div class="portfolio-category">E-Commerce • Concept</div>
-              <h3>Premium Online Store</h3>
-              <p>Conversion-focused e-commerce experience. Demo concept.</p>
-              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-image">Business Intelligence</div>
-            <div class="portfolio-body">
-              <div class="portfolio-category">Analytics • Concept</div>
-              <h3>Business Intelligence Dashboard</h3>
-              <p>Sophisticated analytics dashboard. Demo concept.</p>
-              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
-            </div>
-          </article>
-          <article class="portfolio-card">
-            <div class="portfolio-image">Custom Business System</div>
-            <div class="portfolio-body">
-              <div class="portfolio-category">Custom Software • Concept</div>
-              <h3>Custom Business System</h3>
-              <p>Tailored operations system around real workflow. Demo concept.</p>
-              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" id="about" style="background:var(--bg-secondary);">
-      <div class="container" style="text-align:center;max-width:700px;">
-        <h2>Technology Should Make Business Simpler.</h2>
-        <p style="margin-top:1.2rem;">Quantum OPS Elite exists to create practical technology that helps businesses understand their operations, save time, improve decision-making and grow.</p>
-        <p style="margin-top:0.8rem;">We don’t just build websites. We build digital systems that help businesses operate.</p>
-        <p style="margin-top:1.5rem;font-weight:600;color:var(--text-primary);">Build smarter. Operate better.</p>
-      </div>
-    </section>
-
-    <!-- Request Form -->
-    <section class="section" id="request">
-      <div class="container">
-        <div class="request-grid">
-          <div>
-            <h2>Have a Business Idea?<br>Let’s Build It.</h2>
-            <p style="margin-top:1rem;margin-bottom:1.5rem;">Tell us what you want to build and we’ll help turn it into a working digital system.</p>
-            <ul style="display:flex;flex-direction:column;gap:0.7rem;color:var(--text-muted);">
-              <li>✓ Clear next steps after you submit</li>
-              <li>✓ No obligation consultation</li>
-              <li>✓ Systems designed around your workflow</li>
-            </ul>
-          </div>
-
-          <form id="projectForm" class="request-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Name *</label>
-                <input class="form-input" type="text" name="name" required placeholder="Your full name">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Business Name</label>
-                <input class="form-input" type="text" name="business_name" placeholder="Your business">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Email *</label>
-                <input class="form-input" type="email" name="email" required placeholder="you@example.com">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Phone / WhatsApp</label>
-                <input class="form-input" type="tel" name="phone" placeholder="+234 ...">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Business Type</label>
-                <select class="form-select" name="business_type">
-                  <option value="">Select type</option>
-                  <option value="Retail">Retail</option>
-                  <option value="Services">Services</option>
-                  <option value="E-commerce">E-commerce</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Budget Range</label>
-                <select class="form-select" name="budget">
-                  <option value="">Select range</option>
-                  <option value="Under $500">Under $500</option>
-                  <option value="$500 – $1,500">$500 – $1,500</option>
-                  <option value="$1,500 – $5,000">$1,500 – $5,000</option>
-                  <option value="$5,000+">$5,000+</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">What do you want to build?</label>
-              <input class="form-input" type="text" name="project_type" placeholder="e.g. Inventory system, website, dashboard...">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Additional Information</label>
-              <textarea class="form-textarea" name="message" placeholder="Tell us more..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Request a Project</button>
-            <div class="form-status" id="formStatus"></div>
-          </form>
+        <div class="service-card">
+          <div class="service-title">Executive Dashboards</div>
+          <div class="service-desc">Real-time analytical engines that turn complex business data into simple, actionable intelligence.</div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#home" class="logo"><span class="logo-mark">Q</span><span>Quantum OPS Elite</span></a>
-          <p>Build smarter. Operate better. Digital systems designed around your business.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#about">About</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#request">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Products</h4>
-          <a href="#products">Business Tracker</a>
-          <a href="#solutions">Solutions</a>
-        </div>
-        <div class="footer-col">
-          <h4>Solutions</h4>
-          <a href="#solutions">Websites</a>
-          <a href="#solutions">Dashboards</a>
-          <a href="#solutions">Custom Systems</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Quantum OPS Elite. All rights reserved.</p>
-      </div>
-    </div>
+  <footer>
+    <p>© 2026 Quantum Ops Elite. All rights reserved.</p>
   </footer>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/?text=Hello%20Quantum%20OPS%20Elite%2C%20I%20would%20like%20to%20discuss%20building%20a%20digital%20solution%20for%20my%20business." class="whatsapp-float" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-
-  <!-- Demo Modal -->
-  <div class="demo-modal" id="demoModal">
-    <div class="demo-modal-content">
-      <div class="demo-modal-header">
-        <h3>Quantum OPS Business Tracker <span class="demo-badge">Interactive Demo</span></h3>
-        <button class="demo-close" onclick="closeDemo()">✕</button>
-      </div>
-      <div class="demo-modal-body">
-        <div class="demo-nav">
-          <button class="demo-nav-btn active" data-panel="dashboard">Dashboard</button>
-          <button class="demo-nav-btn" data-panel="inventory">Inventory</button>
-          <button class="demo-nav-btn" data-panel="sales">Sales</button>
-          <button class="demo-nav-btn" data-panel="analytics">Analytics</button>
-        </div>
-        <div class="demo-panel active" data-panel-content="dashboard">
-          <div class="dash-body" style="grid-template-columns:repeat(3,1fr);">
-            <div class="dash-card"><div class="dash-label">Total Revenue</div><div class="dash-value accent">₦1,284,500</div></div>
-            <div class="dash-card"><div class="dash-label">Net Profit</div><div class="dash-value positive">₦423,800</div></div>
-            <div class="dash-card"><div class="dash-label">Orders Today</div><div class="dash-value">47</div></div>
-          </div>
-          <p style="margin-top:1.3rem;font-size:0.85rem;color:var(--text-muted);text-align:center;">Sample demo data only</p>
-        </div>
-        <div class="demo-panel" data-panel-content="inventory">
-          <div class="dash-card">
-            <div class="dash-label">Inventory Summary</div>
-            <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;">
-              <div style="display:flex;justify-content:space-between;"><span>Total SKUs</span><span>247</span></div>
-              <div style="display:flex;justify-content:space-between;"><span>In Stock</span><span>1,642</span></div>
-              <div style="display:flex;justify-content:space-between;"><span>Low Stock</span><span style="color:var(--warning)">38</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="demo-panel" data-panel-content="sales">
-          <div class="dash-body" style="grid-template-columns:1fr 1fr;">
-            <div class="dash-card"><div class="dash-label">Today’s Sales</div><div class="dash-value accent">₦86,200</div></div>
-            <div class="dash-card"><div class="dash-label">This Week</div><div class="dash-value">₦412,800</div></div>
-          </div>
-        </div>
-        <div class="demo-panel" data-panel-content="analytics">
-          <div class="dash-body" style="grid-template-columns:1fr 1fr;">
-            <div class="dash-card"><div class="dash-label">Gross Margin</div><div class="dash-value positive">33%</div></div>
-            <div class="dash-card"><div class="dash-label">Avg. Order Value</div><div class="dash-value">₦18,340</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Supabase + Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // ========== SUPABASE ==========
-    const SUPABASE_URL = 'https://txgsmfceadgircarxclm.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_8lWUTNuFdG_PT85PxPTivg_l5op-_km';
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    // ========== NAVBAR ==========
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // ========== MOBILE MENU ==========
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      mobileToggle.classList.toggle('active');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    function closeMobile() {
-      mobileMenu.classList.remove('open');
-      mobileToggle.classList.remove('active');
-      document.body.style.overflow = '';
+    // Particle network background animation
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-    // ========== DEMO MODAL ==========
-    function openDemo() {
-      document.getElementById('demoModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDemo() {
-      document.getElementById('demoModal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('demoModal').addEventListener('click', (e) => {
-      if (e.target.id === 'demoModal') closeDemo();
-    });
-    document.querySelectorAll('.demo-nav-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.demo-nav-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelector(`[data-panel-content="${btn.dataset.panel}"]`).classList.add('active');
+    const particles = Array.from({ length: 40 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2 + 1
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(20, 184, 166, 0.4)';
+      ctx.strokeStyle = 'rgba(20, 184, 166, 0.08)';
+
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
       });
-    });
 
-    // ========== PROJECT FORM ==========
-    document.getElementById('projectForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const status = document.getElementById('formStatus');
-      const btn = form.querySelector('[type="submit"]');
-      const originalText = btn.textContent;
-
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      if (!name || !email) {
-        status.textContent = 'Please fill in your name and email.';
-        status.className = 'form-status error';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      try {
-        const { error } = await supabase.from('project_requests').insert([{
-          name: name,
-          business_name: form.business_name.value.trim() || null,
-          email: email,
-          phone: form.phone.value.trim() || null,
-          business_type: form.business_type.value || null,
-          project_type: form.project_type.value.trim() || null,
-          budget: form.budget.value || null,
-          message: form.message.value.trim() || null,
-          status: 'new'
-        }]);
-
-        if (error) throw error;
-
-        status.textContent = 'Thank you! Your project request has been received. We will contact you shortly.';
-        status.className = 'form-status success';
-        form.reset();
-      } catch (err) {
-        console.error(err);
-        status.textContent = 'Something went wrong. Please try again or contact us on WhatsApp.';
-        status.className = 'form-status error';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = originalText;
-      }
-    });
+      requestAnimationFrame(animate);
+    }
+    animate();
   </script>
 </body>
 </html>
