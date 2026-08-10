@@ -1,766 +1,431 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum OPS Elite | Digital Systems & Custom Software Engineering</title>
-    <meta name="description" content="Quantum OPS Elite builds modern business websites, custom dashboards, inventory management systems, e-commerce, AI tools, and digital solutions designed to help businesses operate smarter.">
-    <meta name="keywords" content="Quantum OPS Elite, Business Tracker, Custom Software, Dashboards, Supabase, Web Development, Inventory Management">
-
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Quantum OPS Elite | Digital Systems & Software Engineering">
-    <meta property="og:description" content="Digital systems built for businesses that want to operate smarter.">
-    <meta property="twitter:card" content="summary_large_image">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Supabase JS Client (v2 CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum OPS Elite — Engineering Custom Business Systems</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
-<body class="bg-primary text-primary font-inter antialiased selection:bg-purple-primary selection:text-white">
+<body>
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress" class="scroll-progress-bar"></div>
+  <!-- Scroll Progress Indicator Bar -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
 
-    <!-- 1. Sticky Navigation Bar -->
-    <header id="navbar" class="navbar">
-        <div class="nav-container">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-logo">
-                <div class="logo-icon">QO</div>
-                <span class="logo-text">QUANTUM OPS <span class="accent-text">ELITE</span></span>
-            </a>
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">QO</div>
+        <span class="logo-text">QUANTUM <span class="accent-text">OPS</span></span>
+      </a>
 
-            <!-- Desktop Nav Links -->
-            <nav class="desktop-nav">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#flagship" class="nav-link">Products</a>
-                <a href="#services" class="nav-link">Solutions</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#academy" class="nav-link">Academy</a>
-                <a href="#about" class="nav-link">About</a>
-            </nav>
+      <nav class="desktop-nav">
+        <a href="#flagship" class="nav-link">Flagship System</a>
+        <a href="#services" class="nav-link">Solutions</a>
+        <a href="#portfolio" class="nav-link">Live Systems</a>
+        <a href="#stack" class="nav-link">Architecture</a>
+        <a href="#academy" class="nav-link">Academy</a>
+      </nav>
 
-            <!-- Nav Actions -->
-            <div class="nav-actions">
-                <button class="btn btn-secondary text-sm hidden-mobile" id="open-demo-btn">
-                    <i data-lucide="play" class="icon-sm"></i> View Demo
-                </button>
-                <a href="#request-project" class="btn btn-primary text-sm">
-                    Build With Us
-                </a>
-                <!-- Mobile Drawer Trigger -->
-                <button class="mobile-menu-btn" id="mobile-menu-trigger" aria-label="Toggle navigation menu">
-                    <i data-lucide="menu" id="menu-icon"></i>
-                </button>
-            </div>
+      <div class="nav-actions">
+        <a href="#request-project" class="btn btn-primary">Build My System</a>
+        <button class="mobile-menu-btn" id="openMobileMenu" aria-label="Open Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="logo-icon">QO</div>
+        <span class="logo-text">QUANTUM OPS</span>
+      </div>
+      <button class="close-drawer-btn" id="closeMobileMenu" aria-label="Close Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#flagship" class="mobile-link">Flagship System</a>
+      <a href="#services" class="mobile-link">Solutions</a>
+      <a href="#portfolio" class="mobile-link">Live Systems</a>
+      <a href="#stack" class="mobile-link">Architecture</a>
+      <a href="#academy" class="mobile-link">Academy</a>
+      <a href="#request-project" class="mobile-link highlight">Request Project Request &rarr;</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section text-center">
+      <div class="section-container">
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>ENGINEERING CUSTOM BUSINESS SOFTWARE</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Stop Forcing Your Business Into Generic Apps.<br>
+          <span class="gradient-text">We Build Software Around How You Work.</span>
+        </h1>
+        
+        <p class="hero-subhead">
+          Custom Dashboards • POS & Inventory Engines • Real-Time Stock Sync • Direct Supabase Integration
+        </p>
+
+        <p class="hero-description">
+          We replace chaotic manual bookkeeping with custom-engineered software designed specifically for retail, logistics, fashion, and commercial operations.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#request-project" class="btn btn-primary btn-lg">Build My System Now</a>
+          <a href="#flagship" class="btn btn-secondary btn-lg">Experience Flagship System</a>
         </div>
 
-        <!-- Mobile Navigation Drawer -->
-        <div class="mobile-drawer" id="mobile-drawer">
-            <div class="mobile-drawer-header">
-                <span class="logo-text">QUANTUM OPS <span class="accent-text">ELITE</span></span>
-                <button class="close-drawer-btn" id="close-drawer-btn"><i data-lucide="x"></i></button>
+        <!-- LIVE INTERACTIVE SIMULATION FRAME -->
+        <div class="hero-visual-wrapper">
+          <div class="dashboard-frame">
+            <div class="dashboard-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="window-title">Quantum OPS Business Tracker — Real-Time Interface</span>
+              <div class="window-badge">
+                <span class="pulse-dot"></span>
+                <span>System Active</span>
+              </div>
             </div>
-            <nav class="mobile-nav-links">
-                <a href="#home" class="mobile-link">Home</a>
-                <a href="#flagship" class="mobile-link">Products</a>
-                <a href="#services" class="mobile-link">Solutions</a>
-                <a href="#portfolio" class="mobile-link">Portfolio</a>
-                <a href="#academy" class="mobile-link">Academy</a>
-                <a href="#about" class="mobile-link">About</a>
-                <a href="#request-project" class="mobile-link highlight">Request Project</a>
-            </nav>
+
+            <div class="dashboard-body">
+              <div class="dash-grid-4">
+                <div class="dash-card">
+                  <span class="dash-label">Today's Revenue</span>
+                  <span class="dash-value" id="hero-live-rev">₦184,500</span>
+                  <span class="dash-trend positive">+14.2% vs yesterday</span>
+                </div>
+                <div class="dash-card">
+                  <span class="dash-label">Stock Units Tracked</span>
+                  <span class="dash-value" id="hero-live-stock">1,420</span>
+                  <span class="dash-trend info">Real-Time Sync</span>
+                </div>
+                <div class="dash-card">
+                  <span class="dash-label">Pending Customer Debt</span>
+                  <span class="dash-value">₦32,000</span>
+                  <span class="dash-trend warning">2 Overdue Accounts</span>
+                </div>
+                <div class="dash-card">
+                  <span class="dash-label">Database Sync</span>
+                  <span class="dash-value text-success">CONNECTED</span>
+                  <span class="dash-trend positive">&lt; 12ms Supabase Ping</span>
+                </div>
+              </div>
+
+              <div class="dash-chart-box">
+                <div class="chart-header">
+                  <span class="chart-title">Real-Time Sales Activity Log</span>
+                  <span class="chart-tag">Live Feed</span>
+                </div>
+                <div class="chart-bars">
+                  <div class="bar-group"><div class="bar" style="height: 40%"></div><span>09:00</span></div>
+                  <div class="bar-group"><div class="bar" style="height: 65%"></div><span>11:00</span></div>
+                  <div class="bar-group"><div class="bar" style="height: 85%"></div><span>13:00</span></div>
+                  <div class="bar-group"><div class="bar" style="height: 50%"></div><span>15:00</span></div>
+                  <div class="bar-group"><div class="bar active" style="height: 95%"></div><span>17:00</span></div>
+                  <div class="bar-group"><div class="bar" style="height: 70%"></div><span>NOW</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- 2. Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="glow-bg glow-hero"></div>
-            <div class="section-container text-center">
-                
-                <div class="badge-pill">
-                    <i data-lucide="zap" class="badge-icon"></i>
-                    <span>Digital Systems • Websites • Dashboards • AI Solutions</span>
+    <!-- FLAGSHIP PRODUCT SHOWCASE -->
+    <section id="flagship" class="section-padding bg-secondary border-y">
+      <div class="section-container">
+        <div class="flagship-grid">
+          <div class="flagship-content">
+            <span class="section-subtitle">Flagship Engine</span>
+            <h2 class="section-title">Quantum OPS Business Tracker</h2>
+            <p class="section-description" style="margin-left:0; text-align:left;">
+              Our proprietary business operations suite designed to control sales, inventory, debts, and performance tracking without complex spreadsheets.
+            </p>
+
+            <div class="flagship-features">
+              <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div>
+                  <h3>Multi-Channel POS Engine</h3>
+                  <p>Process sales instantly with automatic inventory deduction and receipt generation.</p>
                 </div>
-
-                <h1 class="hero-title">
-                    BUILD SMARTER.<br>
-                    <span class="gradient-text">OPERATE BETTER.</span>
-                </h1>
-
-                <p class="hero-subhead">
-                    Powerful digital systems, business software, and technology solutions built around the way your business actually works.
-                </p>
-
-                <p class="hero-description">
-                    Quantum OPS Elite builds modern business websites, management systems, dashboards, AI-powered tools, and digital products designed to make businesses easier to run and easier to grow.
-                </p>
-
-                <div class="hero-cta-group">
-                    <a href="#flagship" class="btn btn-primary btn-lg">
-                        Explore Quantum OPS <i data-lucide="arrow-right"></i>
-                    </a>
-                    <a href="#request-project" class="btn btn-secondary btn-lg">
-                        Build My Business System
-                    </a>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">📦</div>
+                <div>
+                  <h3>Real-Time Stock Alerts</h3>
+                  <p>Automatic notifications when low stock thresholds are reached across stores.</p>
                 </div>
-
-                <!-- 2.1 Hero Interactive Dashboard Visual -->
-                <div class="hero-visual-wrapper">
-                    <div class="dashboard-frame">
-                        <div class="dashboard-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <div class="window-title">Quantum OPS Business Tracker — Live OS Simulation</div>
-                            <div class="window-badge"><span class="pulse-dot"></span> System Live</div>
-                        </div>
-                        
-                        <div class="dashboard-body">
-                            <!-- Metrics Cards -->
-                            <div class="dash-grid-4">
-                                <div class="dash-card">
-                                    <span class="dash-label">Today's Sales</span>
-                                    <span class="dash-value" id="sim-sales">$2,840.00</span>
-                                    <span class="dash-trend positive">+14.2% today</span>
-                                </div>
-                                <div class="dash-card">
-                                    <span class="dash-label">Net Profit</span>
-                                    <span class="dash-value" id="sim-profit">$980.50</span>
-                                    <span class="dash-trend positive">Margin: 34.5%</span>
-                                </div>
-                                <div class="dash-card">
-                                    <span class="dash-label">Stock Items</span>
-                                    <span class="dash-value" id="sim-stock">1,248</span>
-                                    <span class="dash-trend warning">4 Low Stock</span>
-                                </div>
-                                <div class="dash-card">
-                                    <span class="dash-label">Pending Debts</span>
-                                    <span class="dash-value" id="sim-debts">$320.00</span>
-                                    <span class="dash-trend info">2 Pending</span>
-                                </div>
-                            </div>
-
-                            <!-- Interactive Live Graph Preview -->
-                            <div class="dash-chart-box">
-                                <div class="chart-header">
-                                    <span class="chart-title">Revenue & Margin Analytics</span>
-                                    <span class="chart-tag">Real-Time Sync</span>
-                                </div>
-                                <div class="chart-bars">
-                                    <div class="bar-group"><div class="bar" style="height: 45%;"></div><span>Mon</span></div>
-                                    <div class="bar-group"><div class="bar" style="height: 65%;"></div><span>Tue</span></div>
-                                    <div class="bar-group"><div class="bar" style="height: 55%;"></div><span>Wed</span></div>
-                                    <div class="bar-group"><div class="bar" style="height: 85%;"></div><span>Thu</span></div>
-                                    <div class="bar-group"><div class="bar" style="height: 70%;"></div><span>Fri</span></div>
-                                    <div class="bar-group"><div class="bar active" style="height: 95%;"></div><span>Sat</span></div>
-                                    <div class="bar-group"><div class="bar" style="height: 40%;"></div><span>Sun</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">💳</div>
+                <div>
+                  <h3>Customer Debt Ledger</h3>
+                  <p>Track pending balances, payment histories, and direct WhatsApp invoice reminders.</p>
                 </div>
-
+              </div>
             </div>
-        </section>
 
-        <!-- 3. Flagship Product Section -->
-        <section id="flagship" class="section-padding bg-secondary">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">THE FLAGSHIP SYSTEM</span>
-                    <h2 class="section-title">Meet Quantum OPS Business Tracker</h2>
-                    <p class="section-description">
-                        A powerful business management system designed to help businesses track the numbers that matter—sales, real stock, profit margins, costs, and customer debts.
-                    </p>
-                </div>
-
-                <div class="flagship-grid">
-                    <div class="flagship-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i data-lucide="package-check"></i></div>
-                            <div>
-                                <h3>Real Stock & Inventory Control</h3>
-                                <p>Automated stock adjustments on every sale with instant low-inventory alerts.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i data-lucide="trending-up"></i></div>
-                            <div>
-                                <h3>Automated Profit & Cost Calculation</h3>
-                                <p>Tracks exact buying vs selling prices to give accurate gross and net profit margin metrics.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i data-lucide="book-open-check"></i></div>
-                            <div>
-                                <h3>Customer Debt & Ledger Engine</h3>
-                                <p>Keep clean records of unpaid credit sales and customer repayments with one tap.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i data-lucide="bot"></i></div>
-                            <div>
-                                <h3>AI Executive Briefings</h3>
-                                <p>Automated morning summaries highlighting top-performing products and revenue risks.</p>
-                            </div>
-                        </div>
-
-                        <div class="flagship-cta-group">
-                            <button class="btn btn-primary" onclick="QuantumUI.openDemoModal()">
-                                Explore the Live Demo
-                            </button>
-                            <a href="#request-project" class="btn btn-secondary">
-                                Build Something Like This
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="flagship-preview-card">
-                        <div class="card-glow"></div>
-                        <div class="preview-header">
-                            <i data-lucide="layout-dashboard" class="accent-icon"></i>
-                            <span>Flagship Interface</span>
-                        </div>
-                        <div class="preview-stats-list">
-                            <div class="stat-row">
-                                <span>POS Speed</span>
-                                <span class="stat-val">&lt; 1 Second / Checkout</span>
-                            </div>
-                            <div class="stat-row">
-                                <span>Database Engine</span>
-                                <span class="stat-val">PostgreSQL via Supabase</span>
-                            </div>
-                            <div class="stat-row">
-                                <span>Architecture</span>
-                                <span class="stat-val">Offline-First Capable</span>
-                            </div>
-                            <div class="stat-row">
-                                <span>Multi-User Access</span>
-                                <span class="stat-val">Role-Based Security</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="flagship-cta-group">
+              <a href="#request-project" class="btn btn-primary">Deploy This For Your Business</a>
             </div>
-        </section>
+          </div>
 
-        <!-- 4. Interactive Live Demo Modal Container -->
-        <div id="demo-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <div class="modal-header">
-                    <div class="modal-title-group">
-                        <span class="badge-tag">INTERACTIVE DEMO</span>
-                        <h3>Quantum OPS Business Tracker Engine</h3>
-                    </div>
-                    <button class="modal-close-btn" id="close-demo-modal"><i data-lucide="x"></i></button>
-                </div>
-
-                <!-- Demo Tabs -->
-                <div class="demo-tabs">
-                    <button class="demo-tab active" data-tab="demo-dashboard">Dashboard</button>
-                    <button class="demo-tab" data-tab="demo-inventory">Inventory</button>
-                    <button class="demo-tab" data-tab="demo-products">Products</button>
-                    <button class="demo-tab" data-tab="demo-sales">Sales POS</button>
-                    <button class="demo-tab" data-tab="demo-analytics">Analytics</button>
-                </div>
-
-                <!-- Demo Content Panels -->
-                <div class="demo-body">
-                    <!-- Tab 1: Dashboard -->
-                    <div id="demo-dashboard" class="demo-panel active">
-                        <div class="grid-3">
-                            <div class="card-mini">
-                                <h4>Total Monthly Sales</h4>
-                                <p class="text-xl font-bold text-success">$48,920.00</p>
-                            </div>
-                            <div class="card-mini">
-                                <h4>Total Cost of Goods</h4>
-                                <p class="text-xl font-bold">$31,100.00</p>
-                            </div>
-                            <div class="card-mini">
-                                <h4>Net Realized Profit</h4>
-                                <p class="text-xl font-bold text-purple">$17,820.00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 2: Inventory -->
-                    <div id="demo-inventory" class="demo-panel hidden">
-                        <table class="data-table">
-                            <thead>
-                                <tr><th>Product SKU</th><th>Item Name</th><th>Stock</th><th>Status</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>SKU-1029</td><td>Quantum Smart POS Hub</td><td>24 units</td><td><span class="status-badge ok">In Stock</span></td></tr>
-                                <tr><td>SKU-4820</td><td>Thermal Receipt Printer</td><td>3 units</td><td><span class="status-badge low">Low Stock</span></td></tr>
-                                <tr><td>SKU-9912</td><td>Barcode Scanner Wireless</td><td>18 units</td><td><span class="status-badge ok">In Stock</span></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Tab 3: Products -->
-                    <div id="demo-products" class="demo-panel hidden">
-                        <div class="grid-2">
-                            <div class="card-mini">
-                                <h4>Pro Retail Terminal</h4>
-                                <p class="text-sm text-muted">Buying: $120.00 | Selling: $250.00</p>
-                                <span class="text-xs text-success font-bold">Margin: 52%</span>
-                            </div>
-                            <div class="card-mini">
-                                <h4>Cloud Sync License</h4>
-                                <p class="text-sm text-muted">Buying: $10.00 | Selling: $49.00</p>
-                                <span class="text-xs text-success font-bold">Margin: 79.5%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tab 4: Sales POS -->
-                    <div id="demo-sales" class="demo-panel hidden">
-                        <div class="pos-simulation">
-                            <div class="pos-item">
-                                <span>Customer Checkout Order #8841</span>
-                                <span class="font-bold">$185.00</span>
-                            </div>
-                            <button class="btn btn-primary w-full mt-4" onclick="alert('Demo Sale Processed Successfully!')">Simulate POS Instant Checkout</button>
-                        </div>
-                    </div>
-
-                    <!-- Tab 5: Analytics -->
-                    <div id="demo-analytics" class="demo-panel hidden">
-                        <p class="text-sm text-muted mb-2">Automated Margin & Sales Distribution</p>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar-fill" style="width: 74%;"></div>
-                        </div>
-                        <span class="text-xs text-purple font-bold">74% Sales Conversion Target Achieved</span>
-                    </div>
-                </div>
+          <div class="flagship-preview-card">
+            <div class="preview-header">
+              <span class="pulse-dot"></span>
+              <span>LIVE SYSTEM ARCHITECTURE</span>
             </div>
+            <div class="preview-stats-list">
+              <div class="stat-row">
+                <span>Frontend Engine:</span>
+                <span class="stat-val">Vanilla JS / HTML5 (Zero Overhead)</span>
+              </div>
+              <div class="stat-row">
+                <span>Backend Database:</span>
+                <span class="stat-val">Supabase PostgreSQL</span>
+              </div>
+              <div class="stat-row">
+                <span>Hosting Platform:</span>
+                <span class="stat-val">Vercel Edge Network</span>
+              </div>
+              <div class="stat-row">
+                <span>Authentication:</span>
+                <span class="stat-val">Row Level Security (RLS)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & SOLUTIONS -->
+    <section id="services" class="section-padding">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Core Capabilities</span>
+          <h2 class="section-title">Custom Software Engineering</h2>
+          <p class="section-description">Every system we deliver is custom-built around your actual operational workflow.</p>
         </div>
 
-        <!-- 5. Digital Systems Services Section -->
-        <section id="services" class="section-padding">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">SERVICES & CAPABILITIES</span>
-                    <h2 class="section-title">Digital Systems. Not Just Websites.</h2>
-                    <p class="section-description">We build software engineered specifically around how your company operates.</p>
-                </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Executive Dashboards</h3>
+            <p>Tailor-made analytics platforms tracking daily metrics, revenue trends, and operational bottlenecks in real time.</p>
+            <a href="#request-project" class="card-link">Request Custom Dashboard &rarr;</a>
+          </div>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="globe"></i></div>
-                        <h3>Business Websites</h3>
-                        <p>Modern, ultra-fast websites designed around your brand identity and customer conversion goals.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
+          <div class="service-card">
+            <div class="service-icon">🏷️</div>
+            <h3>Retail POS & Stock Control</h3>
+            <p>Fast point-of-sale interfaces built to handle stock items, customer balances, and multi-user access controls.</p>
+            <a href="#request-project" class="card-link">Request POS System &rarr;</a>
+          </div>
 
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
-                        <h3>Custom Dashboards</h3>
-                        <p>Real-time analytics and operating dashboards that turn raw data into actionable business insight.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="boxes"></i></div>
-                        <h3>Business Management Systems</h3>
-                        <p>Custom POS, stock tracking, debt ledgers, and staff operations platforms built to run your shop or company.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="shopping-bag"></i></div>
-                        <h3>E-Commerce Systems</h3>
-                        <p>High-converting online stores integrated with automated inventory, payment gateways, and checkout engines.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="cpu"></i></div>
-                        <h3>AI Business Solutions</h3>
-                        <p>AI-driven chatbots, executive summary generators, and automated workflows to reduce manual tasks.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon"><i data-lucide="code-2"></i></div>
-                        <h3>Custom Software Engineering</h3>
-                        <p>Bespoke web applications engineered from scratch to match your unique operational workflow.</p>
-                        <a href="#request-project" class="card-link">Learn More <i data-lucide="chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Why Quantum OPS (4 Pillars) -->
-        <section class="section-padding bg-elevated">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">THE QUANTUM METHODOLOGY</span>
-                    <h2 class="section-title">Your Business Is Unique. Your Software Should Be Too.</h2>
-                    <p class="section-description">Most businesses are forced to adapt to rigid, generic software. We build software around how you actually operate.</p>
-                </div>
-
-                <div class="pillars-grid">
-                    <div class="pillar-card">
-                        <div class="pillar-num">01</div>
-                        <h3>UNDERSTAND</h3>
-                        <p>We analyze your operational bottlenecks, revenue flow, inventory logic, and manual friction points.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-num">02</div>
-                        <h3>DESIGN</h3>
-                        <p>We craft high-speed UI/UX wireframes tailored specifically to your staff, management, and customers.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-num">03</div>
-                        <h3>BUILD</h3>
-                        <p>We engineer secure, scalable software utilizing Supabase, clean code, and cloud infrastructure.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-num">04</div>
-                        <h3>IMPROVE</h3>
-                        <p>We continuously optimize performance, security, and feature modules as your business grows.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Portfolio Section -->
-        <section id="portfolio" class="section-padding">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">SHOWCASE OF CAPABILITY</span>
-                    <h2 class="section-title">Proof Is Better Than Promises.</h2>
-                    <p class="section-description">Explore our flagship product and verified technical concepts.</p>
-                </div>
-
-                <div class="portfolio-grid" id="portfolio-container">
-                    <!-- Dynamic rendering via js/supabase.js with fallbacks -->
-                    <div class="portfolio-card featured">
-                        <div class="portfolio-tag">FLAGSHIP PRODUCT</div>
-                        <h3>Quantum OPS Business Tracker</h3>
-                        <p class="portfolio-category">Business Operations / POS / SaaS</p>
-                        <p class="portfolio-desc">A complete retail & inventory management engine tracking sales, margins, debt, and stock levels in real time.</p>
-                        <div class="portfolio-actions">
-                            <button class="btn btn-secondary text-sm" onclick="QuantumUI.openDemoModal()">Live Interactive Preview</button>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-card">
-                        <div class="portfolio-tag">E-COMMERCE DEMO</div>
-                        <h3>Aura Luxury Apparel Store</h3>
-                        <p class="portfolio-category">Custom E-Commerce Engine</p>
-                        <p class="portfolio-desc">High-speed apparel shopping storefront connected to instant checkout and Supabase inventory sync.</p>
-                    </div>
-
-                    <div class="portfolio-card">
-                        <div class="portfolio-tag">BUSINESS INTELLIGENCE</div>
-                        <h3>Apex Logistics Dashboard</h3>
-                        <p class="portfolio-category">Enterprise Analytics</p>
-                        <p class="portfolio-desc">Real-time fleet and shipment tracking system designed with custom metrics charts.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. Technology Stack Section -->
-        <section class="section-padding bg-secondary border-y">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">ENGINEERING FOUNDATION</span>
-                    <h2 class="section-title">Built With Modern Technology</h2>
-                    <p class="section-description">We deploy clean, high-performance tech stacks that guarantee speed, security, and uptime.</p>
-                </div>
-
-                <div class="tech-grid">
-                    <div class="tech-card"><div class="tech-icon">HTML5</div><h4>Semantic HTML5</h4><p>Clean structure optimized for accessibility and SEO.</p></div>
-                    <div class="tech-card"><div class="tech-icon">CSS3</div><h4>Modern CSS3</h4><p>Custom CSS variables, grid, and fluid responsive design.</p></div>
-                    <div class="tech-card"><div class="tech-icon">JS</div><h4>Vanilla JavaScript</h4><p>Zero framework bloat. Fast DOM execution and speed.</p></div>
-                    <div class="tech-card"><div class="tech-icon">SBA</div><h4>Supabase Backend</h4><p>PostgreSQL database, authentication, and security.</p></div>
-                    <div class="tech-card"><div class="tech-icon">GIT</div><h4>GitHub Architecture</h4><p>Version control and continuous integration pipeline.</p></div>
-                    <div class="tech-card"><div class="tech-icon">VCL</div><h4>Vercel Edge Deployment</h4><p>Global CDN hosting with sub-50ms response times.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. Quantum OPS Academy -->
-        <section id="academy" class="section-padding">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">LEARN & SCALE</span>
-                    <h2 class="section-title">Quantum OPS Academy</h2>
-                    <p class="section-description">Master building, managing, and scaling modern digital systems with our practical online masterclasses.</p>
-                </div>
-
-                <div class="academy-grid" id="academy-container">
-                    <!-- Loaded dynamically via Supabase, with static fallbacks -->
-                    <div class="course-card">
-                        <div class="course-badge">Beginner to Advanced</div>
-                        <h3>Building Full-Stack Dashboards with Supabase & Vanilla JS</h3>
-                        <p class="course-desc">Learn how to build real-time inventory and POS management platforms without complex frameworks.</p>
-                        <div class="course-footer">
-                            <span class="course-price">$149.00</span>
-                            <a href="#request-project" class="btn btn-secondary text-sm">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 10. About Section -->
-        <section id="about" class="section-padding bg-elevated">
-            <div class="section-container">
-                <div class="about-wrapper text-center max-w-3xl">
-                    <span class="section-subtitle">OUR MISSION</span>
-                    <h2 class="section-title">Technology Should Make Business Simpler.</h2>
-                    <p class="about-text">
-                        Quantum OPS Elite exists to build practical, reliable technology that helps business owners understand their numbers, automate manual tasks, eliminate financial leakage, and grow with confidence.
-                    </p>
-                    <p class="about-text mt-4">
-                        We believe in systems that work continuously without friction—giving you full control over your business operations.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 11. Testimonials Section -->
-        <section class="section-padding">
-            <div class="section-container">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">VERIFIED FEEDBACK</span>
-                    <h2 class="section-title">What Founders Say</h2>
-                </div>
-
-                <div class="testimonials-grid" id="testimonials-container">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Quantum OPS Tracker completely transformed how we handle daily stock and credit debt. We eliminated stock loss in 30 days."</p>
-                        <div class="testimonial-author">
-                            <strong>Nneoma O.</strong>
-                            <span>Retail Business Owner</span>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The dashboard built for our business is remarkably fast. Our management team relies on it daily for profit decisions."</p>
-                        <div class="testimonial-author">
-                            <strong>Michael T.</strong>
-                            <span>Operations Director</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 12. FAQ Section -->
-        <section class="section-padding bg-secondary">
-            <div class="section-container max-w-3xl">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">QUESTIONS & ANSWERS</span>
-                    <h2 class="section-title">Frequently Asked Questions</h2>
-                </div>
-
-                <div class="faq-accordion">
-                    <div class="faq-item">
-                        <button class="faq-question">What does Quantum OPS Elite build? <i data-lucide="chevron-down"></i></button>
-                        <div class="faq-answer"><p>We engineer custom business management dashboards, POS inventory systems, commercial websites, e-commerce storefronts, AI tools, and bespoke web platforms.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Can you build a custom system around my existing workflow? <i data-lucide="chevron-down"></i></button>
-                        <div class="faq-answer"><p>Yes. We specialize in designing software that adapts to your exact business operations rather than forcing you into generic templates.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">How long does a custom software project take? <i data-lucide="chevron-down"></i></button>
-                        <div class="faq-answer"><p>Typical business websites take 1–2 weeks, while full business management dashboards and POS systems take 3–5 weeks depending on requirements.</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 13. Project Request Form Section -->
-        <section id="request-project" class="section-padding relative">
-            <div class="section-container max-w-3xl">
-                <div class="section-header text-center">
-                    <span class="section-subtitle">START YOUR BUILD</span>
-                    <h2 class="section-title">Have a Business Idea? Let’s Build It.</h2>
-                    <p class="section-description">Tell us what you want to build and we will help turn it into a working digital system.</p>
-                </div>
-
-                <form id="project-request-form" class="form-card">
-                    <div id="form-alert" class="form-alert hidden"></div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label for="req-name">Your Full Name *</label>
-                            <input type="text" id="req-name" name="name" required placeholder="e.g. Alex Johnson" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="req-business">Business Name</label>
-                            <input type="text" id="req-business" name="business_name" placeholder="e.g. Apex Outfitters" class="form-input">
-                        </div>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label for="req-email">Email Address *</label>
-                            <input type="email" id="req-email" name="email" required placeholder="alex@company.com" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="req-phone">Phone / WhatsApp Number</label>
-                            <input type="tel" id="req-phone" name="phone" placeholder="+234..." class="form-input">
-                        </div>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label for="req-business-type">Business Type</label>
-                            <select id="req-business-type" name="business_type" class="form-input">
-                                <option value="Retail & POS">Retail & Offline Store</option>
-                                <option value="E-Commerce">E-Commerce</option>
-                                <option value="Services & Agency">Professional Services</option>
-                                <option value="Tech / SaaS">Tech / Startup</option>
-                                <option value="Other">Other Industry</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="req-project-type">Project Needed</label>
-                            <select id="req-project-type" name="project_type" class="form-input">
-                                <option value="Business Tracker System">Business Tracker System</option>
-                                <option value="Custom Business Dashboard">Custom Dashboard</option>
-                                <option value="Business Website">Business Website</option>
-                                <option value="E-Commerce Store">E-Commerce Platform</option>
-                                <option value="Custom Software">Custom Software Build</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label for="req-budget">Estimated Budget</label>
-                            <select id="req-budget" name="budget" class="form-input">
-                                <option value="$500 - $1,500">$500 - $1,500</option>
-                                <option value="$1,500 - $3,500">$1,500 - $3,500</option>
-                                <option value="$3,500 - $7,500">$3,500 - $7,500</option>
-                                <option value="$7,500+">$7,500+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="req-timeline">Desired Timeline</label>
-                            <select id="req-timeline" name="timeline" class="form-input">
-                                <option value="Urgent (1-2 weeks)">Urgent (1-2 weeks)</option>
-                                <option value="Standard (3-4 weeks)">Standard (3-4 weeks)</option>
-                                <option value="Flexible">Flexible</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="req-message">Project Description / Requirements</label>
-                        <textarea id="req-message" name="message" rows="4" placeholder="Briefly describe your business needs or features you want..." class="form-input"></textarea>
-                    </div>
-
-                    <button type="submit" id="submit-project-btn" class="btn btn-primary w-full py-4 text-base">
-                        <i data-lucide="send"></i> Request Project Proposal
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 14. Social Media Section -->
-        <section class="section-padding bg-secondary border-t">
-            <div class="section-container text-center">
-                <span class="section-subtitle">FOLLOW THE BUILD</span>
-                <h2 class="section-title">Join Our Developer & Founder Community</h2>
-                <p class="section-description">We regularly share live build updates, technical breakdowns, and software tutorials.</p>
-
-                <div class="social-links-grid">
-                    <a href="https://x.com" target="_blank" rel="noopener" class="social-card"><i data-lucide="twitter"></i><span>X (Twitter)</span></a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-card"><i data-lucide="linkedin"></i><span>LinkedIn</span></a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener" class="social-card"><i data-lucide="facebook"></i><span>Facebook</span></a>
-                    <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-card"><i data-lucide="video"></i><span>TikTok</span></a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener" class="social-card"><i data-lucide="youtube"></i><span>YouTube</span></a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 15. Premium Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="brand-logo">
-                        <div class="logo-icon">QO</div>
-                        <span class="logo-text">QUANTUM OPS <span class="accent-text">ELITE</span></span>
-                    </div>
-                    <p class="footer-tagline">Build smarter. Operate better.</p>
-                    <p class="text-xs text-muted mt-2">Digital systems built for high-growth businesses.</p>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#flagship">Flagship Product</a></li>
-                        <li><a href="#services">Solutions</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Ecosystem</h4>
-                    <ul>
-                        <li><a href="#academy">Quantum Academy</a></li>
-                        <li><a href="#about">Our Mission</a></li>
-                        <li><a href="#request-project">Start Project</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Legal & Security</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">System Security</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Quantum OPS Elite. All rights reserved. Powered by HTML5, Supabase & Vercel.</p>
-            </div>
+          <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>High-Conversion Brand Websites</h3>
+            <p>Performance-engineered custom websites designed for brand authority, seamless response, and immediate conversions.</p>
+            <a href="#request-project" class="card-link">Request Custom Website &rarr;</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- 16. Floating WhatsApp Button -->
-    <a href="https://wa.me/?text=Hello%20Quantum%20OPS%20Elite,%20I%20would%20like%20to%20discuss%20building%20a%20digital%20solution%20for%20my%20business." 
-       target="_blank" 
-       rel="noopener" 
-       class="whatsapp-float" 
-       aria-label="Contact Quantum OPS Elite on WhatsApp">
-        <i data-lucide="message-circle" class="whatsapp-icon"></i>
-    </a>
+    <!-- REAL-TIME DATABASE PORTFOLIO -->
+    <section id="portfolio" class="section-padding bg-secondary border-y">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Database Direct</span>
+          <h2 class="section-title">Published Systems & Deployments</h2>
+          <p class="section-description">
+            100% real deployments and proprietary engineering. Querying live records directly from our Supabase database.
+          </p>
+        </div>
 
-    <!-- Scripts Execution Order -->
-    <script src="js/supabase.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/forms.js"></script>
-    <script src="js/main.js"></script>
+        <div class="portfolio-grid" id="portfolio-container">
+          <!-- Dynamic Database Content Will Ingest Here Live -->
+          <div class="text-center width-full" style="grid-column: 1 / -1; padding: 2rem;">
+            <p class="text-muted">Connecting to Supabase Database System...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY ARCHITECTURE -->
+    <section id="stack" class="section-padding">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Under The Hood</span>
+          <h2 class="section-title">High-Performance Tech Stack</h2>
+          <p class="section-description">We build software engineered for sub-second speeds, security, and scalability.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-icon">&lt;/&gt;</div>
+            <h4>HTML5 / CSS3</h4>
+            <p>Clean Native Markup</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">JS</div>
+            <h4>Vanilla JS</h4>
+            <p>Zero Framework Bloat</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">⚡</div>
+            <h4>Supabase</h4>
+            <p>PostgreSQL Backend</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">▲</div>
+            <h4>Vercel</h4>
+            <p>Global Edge Deployment</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🐙</div>
+            <h4>GitHub</h4>
+            <p>Version Control & CI/CD</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">🔒</div>
+            <h4>RLS Security</h4>
+            <p>Database Row Security</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT REQUEST INTAKE FORM SECTION -->
+    <section id="request-project" class="section-padding bg-secondary border-t">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Custom Engineering Intake</span>
+          <h2 class="section-title">Request Your Custom System Proposal</h2>
+          <p class="section-description">
+            Tell us about your business operations and what software you need engineered. Your submission will register immediately in our intake database.
+          </p>
+        </div>
+
+        <div class="form-card max-width-800 margin-auto">
+          <div id="formAlertContainer"></div>
+          
+          <form id="projectIntakeForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="fullName">Full Name / Business Owner</label>
+                <input type="text" id="fullName" class="form-input" placeholder="e.g. Chidi Okeke" required />
+              </div>
+              <div class="form-group">
+                <label for="businessName">Business Name & Industry</label>
+                <input type="text" id="businessName" class="form-input" placeholder="e.g. Nneoma Clothing / Fashion Retail" required />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="phoneWhatsapp">WhatsApp / Phone Number</label>
+                <input type="tel" id="phoneWhatsapp" class="form-input" placeholder="+234..." required />
+              </div>
+              <div class="form-group">
+                <label for="systemType">Required Core System</label>
+                <select id="systemType" class="form-input" required>
+                  <option value="" disabled selected>Select Primary System Requirement...</option>
+                  <option value="inventory-pos">Retail POS & Stock Tracker Engine</option>
+                  <option value="custom-dashboard">Executive Business Operations Dashboard</option>
+                  <option value="brand-website">High-Conversion Custom Website</option>
+                  <option value="full-suite">Full Quantum OPS Enterprise Suite</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="projectDetails">Current Operational Needs & Pain Points</label>
+              <textarea id="projectDetails" class="form-input" rows="4" placeholder="Describe how your business currently handles sales, stock, and records, and what you want automated..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg width-full" id="submitBtn">
+              <span>Submit Project Request Direct to Supabase</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">QO</div>
+            <span class="logo-text">QUANTUM <span class="accent-text">OPS</span></span>
+          </div>
+          <p class="text-muted" style="font-size: 0.85rem; max-width: 300px;">
+            Engineering high-performance business software, custom operational dashboards, and database-driven solutions.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#flagship">Flagship System</a></li>
+            <li><a href="#services">Solutions</a></li>
+            <li><a href="#portfolio">Live Deployments</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Systems</h4>
+          <ul>
+            <li><a href="#request-project">POS Engines</a></li>
+            <li><a href="#request-project">Executive Dashboards</a></li>
+            <li><a href="#request-project">Custom Integrations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul>
+            <li><a href="#stack">Supabase Backend</a></li>
+            <li><a href="#stack">Vercel Edge Network</a></li>
+            <li><a href="#stack">Vanilla JS Stack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Quantum OPS Elite. Operating with 100% verified real-time database architecture.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/2340000000000?text=Hello%20Quantum%20OPS%20Elite,%20I%20want%20to%20inquire%20about%20a%20custom%20business%20system." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.998 0 2.149.684 4.14 1.847 5.772l-1.291 4.711 4.832-1.267c1.572.906 3.389 1.42 5.309 1.42 5.518 0 9.998-4.48 9.998-9.998 0-5.518-4.48-9.998-9.998-9.998zm5.823 14.161c-.247.691-1.229 1.282-2.023 1.442-.544.11-1.253.199-3.64-.789-3.053-1.263-5.015-4.364-5.167-4.567-.152-.203-1.233-1.639-1.233-3.125 0-1.486.779-2.217 1.057-2.518.278-.301.608-.376.811-.376.203 0 .406.002.583.011.187.009.439-.071.688.526.248.598.847 2.068.922 2.22.075.152.126.33.025.532-.101.203-.152.329-.304.507-.152.178-.32.398-.456.533-.152.152-.311.317-.134.62.178.303.789 1.297 1.693 2.102 1.163 1.034 2.145 1.354 2.449 1.506.304.152.481.127.659-.076.178-.203.76-.886.963-1.19.203-.304.406-.253.684-.152.278.101 1.768.835 2.072.987.304.152.507.228.583.355.076.127.076.733-.171 1.424z"/></style></svg>
+  </a>
+
+  <!-- JavaScript Entry Point -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
