@@ -3,217 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantum OPS Elite — Engineering Custom Business Systems</title>
+  <title>Quantum OPS Elite | Digital Systems, Business Software & Technology Solutions</title>
+  <meta name="description" content="Quantum OPS Elite builds powerful business websites, dashboards, software systems, AI solutions and digital products designed to help businesses operate smarter and grow." />
   
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- CSS Stylesheets -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Quantum OPS Elite | Build Smarter. Operate Better." />
+  <meta property="og:description" content="Digital systems designed around the way your business actually works." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C5CE7'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui' font-weight='800'>Q</text></svg>" />
 </head>
 <body>
 
-  <!-- Scroll Progress Indicator Bar -->
-  <div class="scroll-progress-bar" id="scrollProgress"></div>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress"></div>
 
-  <!-- Top Navigation Header -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="#" class="brand-logo">
-        <div class="logo-icon">QO</div>
-        <span class="logo-text">QUANTUM <span class="accent-text">OPS</span></span>
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">Q</span>
+        <span>Quantum OPS Elite</span>
       </a>
 
-      <nav class="desktop-nav">
-        <a href="#flagship" class="nav-link">Flagship System</a>
-        <a href="#services" class="nav-link">Solutions</a>
-        <a href="#portfolio" class="nav-link">Live Systems</a>
-        <a href="#stack" class="nav-link">Architecture</a>
-        <a href="#academy" class="nav-link">Academy</a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#academy">Academy</a>
+        <a href="#about">About</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#request-project" class="btn btn-primary">Build My System</a>
-        <button class="mobile-menu-btn" id="openMobileMenu" aria-label="Open Navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+        <button class="btn btn-ghost btn-sm" data-open-demo>View Demo</button>
+        <a href="#request" class="btn btn-primary btn-sm">Build With Us</a>
       </div>
+
+      <button class="mobile-toggle" aria-label="Menu">
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <div class="mobile-drawer-header">
-      <div class="brand-logo">
-        <div class="logo-icon">QO</div>
-        <span class="logo-text">QUANTUM OPS</span>
-      </div>
-      <button class="close-drawer-btn" id="closeMobileMenu" aria-label="Close Navigation">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-    </div>
-    <div class="mobile-nav-links">
-      <a href="#flagship" class="mobile-link">Flagship System</a>
-      <a href="#services" class="mobile-link">Solutions</a>
-      <a href="#portfolio" class="mobile-link">Live Systems</a>
-      <a href="#stack" class="mobile-link">Architecture</a>
-      <a href="#academy" class="mobile-link">Academy</a>
-      <a href="#request-project" class="mobile-link highlight">Request Project Request &rarr;</a>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#academy">Academy</a>
+    <a href="#about">About</a>
+    <a href="#request" class="btn btn-primary">Build With Us</a>
   </div>
 
   <main>
-    <!-- HERO SECTION -->
-    <section class="hero-section text-center">
-      <div class="section-container">
-        <div class="badge-pill">
-          <span class="pulse-dot"></span>
-          <span>ENGINEERING CUSTOM BUSINESS SOFTWARE</span>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero section" id="home">
+      <div class="bg-grid"></div>
+      <div class="bg-radial" style="top:-10%;left:-10%;"></div>
+
+      <div class="container relative z-10">
+        <div class="hero-content fade-up">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Digital Systems for Modern Business
+          </div>
+
+          <h1>BUILD SMARTER.<br>OPERATE BETTER.</h1>
+
+          <p class="hero-sub">Powerful digital systems, business software and technology solutions built around the way your business actually works.</p>
+
+          <p class="hero-desc">Quantum OPS Elite builds modern business websites, management systems, dashboards, AI-powered tools and digital products designed to make businesses easier to run and easier to grow.</p>
+
+          <div class="hero-ctas">
+            <a href="#products" class="btn btn-primary btn-lg">Explore Quantum OPS</a>
+            <a href="#request" class="btn btn-secondary btn-lg">Build My Business System</a>
+          </div>
+
+          <div class="hero-trust">
+            <span>Business Systems</span>
+            <span>Websites</span>
+            <span>Dashboards</span>
+            <span>AI Solutions</span>
+          </div>
         </div>
-        
-        <h1 class="hero-title">
-          Stop Forcing Your Business Into Generic Apps.<br>
-          <span class="gradient-text">We Build Software Around How You Work.</span>
-        </h1>
-        
-        <p class="hero-subhead">
-          Custom Dashboards • POS & Inventory Engines • Real-Time Stock Sync • Direct Supabase Integration
-        </p>
+      </div>
 
-        <p class="hero-description">
-          We replace chaotic manual bookkeeping with custom-engineered software designed specifically for retail, logistics, fashion, and commercial operations.
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="#request-project" class="btn btn-primary btn-lg">Build My System Now</a>
-          <a href="#flagship" class="btn btn-secondary btn-lg">Experience Flagship System</a>
-        </div>
-
-        <!-- LIVE INTERACTIVE SIMULATION FRAME -->
-        <div class="hero-visual-wrapper">
-          <div class="dashboard-frame">
-            <div class="dashboard-header">
-              <div class="window-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="window-title">Quantum OPS Business Tracker — Real-Time Interface</span>
-              <div class="window-badge">
-                <span class="pulse-dot"></span>
-                <span>System Active</span>
+      <!-- Hero Dashboard Visual -->
+      <div class="hero-visual fade-up stagger-2">
+        <div class="dashboard-mock">
+          <div class="dash-header">
+            <span class="dash-dot red"></span>
+            <span class="dash-dot yellow"></span>
+            <span class="dash-dot green"></span>
+            <span class="dash-title">Quantum OPS Business Tracker</span>
+          </div>
+          <div class="dash-body">
+            <div class="dash-card">
+              <div class="dash-label">Revenue</div>
+              <div class="dash-value accent" data-animate-number="128450">0</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">Profit</div>
+              <div class="dash-value positive" data-animate-number="42380">0</div>
+            </div>
+            <div class="dash-card wide">
+              <div class="dash-label">Sales Overview</div>
+              <div class="dash-chart">
+                <div class="dash-bar" style="height:40%"></div>
+                <div class="dash-bar" style="height:65%"></div>
+                <div class="dash-bar" style="height:45%"></div>
+                <div class="dash-bar" style="height:80%"></div>
+                <div class="dash-bar" style="height:55%"></div>
+                <div class="dash-bar" style="height:90%"></div>
+                <div class="dash-bar" style="height:70%"></div>
+                <div class="dash-bar" style="height:50%"></div>
               </div>
             </div>
-
-            <div class="dashboard-body">
-              <div class="dash-grid-4">
-                <div class="dash-card">
-                  <span class="dash-label">Today's Revenue</span>
-                  <span class="dash-value" id="hero-live-rev">₦184,500</span>
-                  <span class="dash-trend positive">+14.2% vs yesterday</span>
-                </div>
-                <div class="dash-card">
-                  <span class="dash-label">Stock Units Tracked</span>
-                  <span class="dash-value" id="hero-live-stock">1,420</span>
-                  <span class="dash-trend info">Real-Time Sync</span>
-                </div>
-                <div class="dash-card">
-                  <span class="dash-label">Pending Customer Debt</span>
-                  <span class="dash-value">₦32,000</span>
-                  <span class="dash-trend warning">2 Overdue Accounts</span>
-                </div>
-                <div class="dash-card">
-                  <span class="dash-label">Database Sync</span>
-                  <span class="dash-value text-success">CONNECTED</span>
-                  <span class="dash-trend positive">&lt; 12ms Supabase Ping</span>
-                </div>
-              </div>
-
-              <div class="dash-chart-box">
-                <div class="chart-header">
-                  <span class="chart-title">Real-Time Sales Activity Log</span>
-                  <span class="chart-tag">Live Feed</span>
-                </div>
-                <div class="chart-bars">
-                  <div class="bar-group"><div class="bar" style="height: 40%"></div><span>09:00</span></div>
-                  <div class="bar-group"><div class="bar" style="height: 65%"></div><span>11:00</span></div>
-                  <div class="bar-group"><div class="bar" style="height: 85%"></div><span>13:00</span></div>
-                  <div class="bar-group"><div class="bar" style="height: 50%"></div><span>15:00</span></div>
-                  <div class="bar-group"><div class="bar active" style="height: 95%"></div><span>17:00</span></div>
-                  <div class="bar-group"><div class="bar" style="height: 70%"></div><span>NOW</span></div>
-                </div>
-              </div>
+            <div class="dash-card">
+              <div class="dash-label">Inventory</div>
+              <div class="dash-value" data-animate-number="1842">0</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">Products</div>
+              <div class="dash-value" data-animate-number="247">0</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FLAGSHIP PRODUCT SHOWCASE -->
-    <section id="flagship" class="section-padding bg-secondary border-y">
-      <div class="section-container">
+    <!-- ==================== FLAGSHIP PRODUCT ==================== -->
+    <section class="section flagship" id="products">
+      <div class="container">
         <div class="flagship-grid">
-          <div class="flagship-content">
-            <span class="section-subtitle">Flagship Engine</span>
-            <h2 class="section-title">Quantum OPS Business Tracker</h2>
-            <p class="section-description" style="margin-left:0; text-align:left;">
-              Our proprietary business operations suite designed to control sales, inventory, debts, and performance tracking without complex spreadsheets.
-            </p>
-
+          <div class="flagship-content fade-up">
+            <p class="text-soft" style="font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">The Flagship System</p>
+            <h2>Meet Quantum OPS<br>Business Tracker</h2>
+            <p>A powerful business management system designed to help businesses track the numbers that matter — inventory, products, sales, costs, stock levels and profitability.</p>
+            
             <div class="flagship-features">
-              <div class="feature-item">
-                <div class="feature-icon">⚡</div>
-                <div>
-                  <h3>Multi-Channel POS Engine</h3>
-                  <p>Process sales instantly with automatic inventory deduction and receipt generation.</p>
-                </div>
+              <div class="flagship-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Real-time Dashboard
               </div>
-              <div class="feature-item">
-                <div class="feature-icon">📦</div>
-                <div>
-                  <h3>Real-Time Stock Alerts</h3>
-                  <p>Automatic notifications when low stock thresholds are reached across stores.</p>
-                </div>
+              <div class="flagship-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Inventory & Stock
               </div>
-              <div class="feature-item">
-                <div class="feature-icon">💳</div>
-                <div>
-                  <h3>Customer Debt Ledger</h3>
-                  <p>Track pending balances, payment histories, and direct WhatsApp invoice reminders.</p>
-                </div>
+              <div class="flagship-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                POS Sales Tracking
+              </div>
+              <div class="flagship-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Profit & Analytics
               </div>
             </div>
 
-            <div class="flagship-cta-group">
-              <a href="#request-project" class="btn btn-primary">Deploy This For Your Business</a>
+            <div class="flex gap-4" style="flex-wrap:wrap;">
+              <button class="btn btn-primary" data-open-demo>Explore the Live Demo</button>
+              <a href="#request" class="btn btn-secondary">Build Something Like This</a>
             </div>
           </div>
 
-          <div class="flagship-preview-card">
-            <div class="preview-header">
-              <span class="pulse-dot"></span>
-              <span>LIVE SYSTEM ARCHITECTURE</span>
-            </div>
-            <div class="preview-stats-list">
-              <div class="stat-row">
-                <span>Frontend Engine:</span>
-                <span class="stat-val">Vanilla JS / HTML5 (Zero Overhead)</span>
+          <div class="flagship-visual fade-up stagger-2">
+            <div class="flagship-mock">
+              <div class="dash-header">
+                <span class="dash-dot red"></span>
+                <span class="dash-dot yellow"></span>
+                <span class="dash-dot green"></span>
+                <span class="dash-title">Dashboard Overview</span>
               </div>
-              <div class="stat-row">
-                <span>Backend Database:</span>
-                <span class="stat-val">Supabase PostgreSQL</span>
-              </div>
-              <div class="stat-row">
-                <span>Hosting Platform:</span>
-                <span class="stat-val">Vercel Edge Network</span>
-              </div>
-              <div class="stat-row">
-                <span>Authentication:</span>
-                <span class="stat-val">Row Level Security (RLS)</span>
+              <div class="dash-body" style="min-height:280px;">
+                <div class="dash-card">
+                  <div class="dash-label">Today's Sales</div>
+                  <div class="dash-value accent">₦ 86,200</div>
+                </div>
+                <div class="dash-card">
+                  <div class="dash-label">Stock Alerts</div>
+                  <div class="dash-value" style="color:var(--warning);">12</div>
+                </div>
+                <div class="dash-card wide">
+                  <div class="dash-label">Weekly Revenue</div>
+                  <div class="dash-chart" style="height:70px;">
+                    <div class="dash-bar" style="height:50%"></div>
+                    <div class="dash-bar" style="height:70%"></div>
+                    <div class="dash-bar" style="height:40%"></div>
+                    <div class="dash-bar" style="height:85%"></div>
+                    <div class="dash-bar" style="height:60%"></div>
+                    <div class="dash-bar" style="height:95%"></div>
+                    <div class="dash-bar" style="height:75%"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -221,211 +216,468 @@
       </div>
     </section>
 
-    <!-- SERVICES & SOLUTIONS -->
-    <section id="services" class="section-padding">
-      <div class="section-container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Core Capabilities</span>
-          <h2 class="section-title">Custom Software Engineering</h2>
-          <p class="section-description">Every system we deliver is custom-built around your actual operational workflow.</p>
+    <!-- ==================== WHAT WE BUILD ==================== -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Digital Systems. Not Just Websites.</h2>
+          <p>We build practical technology that helps businesses understand their operations, save time and grow with confidence.</p>
         </div>
 
         <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Executive Dashboards</h3>
-            <p>Tailor-made analytics platforms tracking daily metrics, revenue trends, and operational bottlenecks in real time.</p>
-            <a href="#request-project" class="card-link">Request Custom Dashboard &rarr;</a>
-          </div>
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3>Business Websites</h3>
+            <p>Modern websites designed around the business, brand and customers.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
 
-          <div class="service-card">
-            <div class="service-icon">🏷️</div>
-            <h3>Retail POS & Stock Control</h3>
-            <p>Fast point-of-sale interfaces built to handle stock items, customer balances, and multi-user access controls.</p>
-            <a href="#request-project" class="card-link">Request POS System &rarr;</a>
-          </div>
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            </div>
+            <h3>Custom Dashboards</h3>
+            <p>Real-time dashboards that turn business information into clear insights.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
 
-          <div class="service-card">
-            <div class="service-icon">🌐</div>
-            <h3>High-Conversion Brand Websites</h3>
-            <p>Performance-engineered custom websites designed for brand authority, seamless response, and immediate conversions.</p>
-            <a href="#request-project" class="card-link">Request Custom Website &rarr;</a>
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <h3>Business Management Systems</h3>
+            <p>Inventory, sales, operations and tracking systems built around your workflow.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <h3>E-Commerce</h3>
+            <p>Modern online stores designed for conversion and seamless experience.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M16 14v1a4 4 0 0 1-8 0v-1"/></svg>
+            </div>
+            <h3>AI Business Solutions</h3>
+            <p>AI-powered tools that reduce repetitive work and improve decisions.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Custom Software</h3>
+            <p>Software designed specifically around how your company works.</p>
+            <a href="#request" class="service-link">Learn More →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY QUANTUM OPS ==================== -->
+    <section class="section" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Your Business Is Unique.<br>Your Software Should Be Too.</h2>
+          <p>Most businesses are forced to adapt to generic software. We build systems around how the business actually operates.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card fade-up">
+            <div class="pillar-number">01</div>
+            <h3>Understand</h3>
+            <p>We understand how your business really works before designing anything.</p>
+          </div>
+          <div class="pillar-card fade-up">
+            <div class="pillar-number">02</div>
+            <h3>Design</h3>
+            <p>We design the right digital experience around your real workflows.</p>
+          </div>
+          <div class="pillar-card fade-up">
+            <div class="pillar-number">03</div>
+            <h3>Build</h3>
+            <p>We build the system with modern technology and deploy it ready for use.</p>
+          </div>
+          <div class="pillar-card fade-up">
+            <div class="pillar-number">04</div>
+            <h3>Improve</h3>
+            <p>We continue improving as your business grows.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- REAL-TIME DATABASE PORTFOLIO -->
-    <section id="portfolio" class="section-padding bg-secondary border-y">
-      <div class="section-container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Database Direct</span>
-          <h2 class="section-title">Published Systems & Deployments</h2>
-          <p class="section-description">
-            100% real deployments and proprietary engineering. Querying live records directly from our Supabase database.
-          </p>
+    <!-- ==================== PORTFOLIO ==================== -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Proof Is Better Than Promises.</h2>
+          <p>Explore what Quantum OPS Elite can build.</p>
         </div>
 
-        <div class="portfolio-grid" id="portfolio-container">
-          <!-- Dynamic Database Content Will Ingest Here Live -->
-          <div class="text-center width-full" style="grid-column: 1 / -1; padding: 2rem;">
-            <p class="text-muted">Connecting to Supabase Database System...</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="portfolio-grid">
+          <article class="portfolio-card fade-up">
+            <div class="portfolio-image">
+              <div class="portfolio-image-placeholder">Quantum OPS Business Tracker</div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">Business Management / SaaS</div>
+              <h3>Quantum OPS Business Tracker</h3>
+              <p>A modern business tracking system for inventory, sales, costs, stock and profitability.</p>
+              <button class="btn btn-secondary btn-sm" data-open-demo>View Interactive Demo</button>
+            </div>
+          </article>
 
-    <!-- TECHNOLOGY ARCHITECTURE -->
-    <section id="stack" class="section-padding">
-      <div class="section-container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Under The Hood</span>
-          <h2 class="section-title">High-Performance Tech Stack</h2>
-          <p class="section-description">We build software engineered for sub-second speeds, security, and scalability.</p>
-        </div>
+          <article class="portfolio-card fade-up">
+            <div class="portfolio-image">
+              <div class="portfolio-image-placeholder">E-Commerce Concept</div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">E-Commerce • Concept</div>
+              <h3>Premium Online Store</h3>
+              <p>Conversion-focused e-commerce experience with modern design. Demo concept.</p>
+              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
+            </div>
+          </article>
 
-        <div class="tech-grid">
-          <div class="tech-card">
-            <div class="tech-icon">&lt;/&gt;</div>
-            <h4>HTML5 / CSS3</h4>
-            <p>Clean Native Markup</p>
-          </div>
-          <div class="tech-card">
-            <div class="tech-icon">JS</div>
-            <h4>Vanilla JS</h4>
-            <p>Zero Framework Bloat</p>
-          </div>
-          <div class="tech-card">
-            <div class="tech-icon">⚡</div>
-            <h4>Supabase</h4>
-            <p>PostgreSQL Backend</p>
-          </div>
-          <div class="tech-card">
-            <div class="tech-icon">▲</div>
-            <h4>Vercel</h4>
-            <p>Global Edge Deployment</p>
-          </div>
-          <div class="tech-card">
-            <div class="tech-icon">🐙</div>
-            <h4>GitHub</h4>
-            <p>Version Control & CI/CD</p>
-          </div>
-          <div class="tech-card">
-            <div class="tech-icon">🔒</div>
-            <h4>RLS Security</h4>
-            <p>Database Row Security</p>
-          </div>
+          <article class="portfolio-card fade-up">
+            <div class="portfolio-image">
+              <div class="portfolio-image-placeholder">Business Intelligence</div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">Analytics • Concept</div>
+              <h3>Business Intelligence Dashboard</h3>
+              <p>Sophisticated analytics dashboard that turns data into clear insights. Demo concept.</p>
+              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
+            </div>
+          </article>
+
+          <article class="portfolio-card fade-up">
+            <div class="portfolio-image">
+              <div class="portfolio-image-placeholder">Custom Business System</div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">Custom Software • Concept</div>
+              <h3>Custom Business System</h3>
+              <p>Tailored operations system designed around a company’s real workflow. Demo concept.</p>
+              <a href="#request" class="btn btn-secondary btn-sm">Discuss Similar Project</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- PROJECT REQUEST INTAKE FORM SECTION -->
-    <section id="request-project" class="section-padding bg-secondary border-t">
-      <div class="section-container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Custom Engineering Intake</span>
-          <h2 class="section-title">Request Your Custom System Proposal</h2>
-          <p class="section-description">
-            Tell us about your business operations and what software you need engineered. Your submission will register immediately in our intake database.
-          </p>
+    <!-- ==================== ACADEMY ==================== -->
+    <section class="section" id="academy" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Quantum OPS Academy</h2>
+          <p>Learn how to build, manage and grow with modern digital tools.</p>
         </div>
 
-        <div class="form-card max-width-800 margin-auto">
-          <div id="formAlertContainer"></div>
-          
-          <form id="projectIntakeForm">
-            <div class="form-grid-2">
+        <div class="courses-grid">
+          <article class="course-card fade-up">
+            <div class="course-image">Building Business Websites</div>
+            <div class="course-body">
+              <div class="course-level">Beginner</div>
+              <h3>Building Business Websites</h3>
+              <p>Learn how to design and build modern, high-converting websites for real businesses.</p>
+              <div class="course-footer">
+                <span class="course-price">Coming Soon</span>
+                <button class="btn btn-secondary btn-sm" disabled>Notify Me</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card fade-up">
+            <div class="course-image">Digital Business Systems</div>
+            <div class="course-body">
+              <div class="course-level">Intermediate</div>
+              <h3>Digital Business Systems</h3>
+              <p>Understand how to design systems that help businesses track operations and grow.</p>
+              <div class="course-footer">
+                <span class="course-price">Coming Soon</span>
+                <button class="btn btn-secondary btn-sm" disabled>Notify Me</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card fade-up">
+            <div class="course-image">AI Tools for Business</div>
+            <div class="course-body">
+              <div class="course-level">All Levels</div>
+              <h3>AI Tools for Business</h3>
+              <p>Practical ways to use AI to reduce repetitive work and improve decision-making.</p>
+              <div class="course-footer">
+                <span class="course-price">Coming Soon</span>
+                <button class="btn btn-secondary btn-sm" disabled>Notify Me</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-content fade-up">
+          <h2>Technology Should Make Business Simpler.</h2>
+          <p>Quantum OPS Elite exists to create practical technology that helps businesses understand their operations, save time, improve decision-making and grow.</p>
+          <p>We don’t just build websites. We build digital systems that help businesses operate.</p>
+          <p style="margin-top:1.5rem;"><strong style="color:var(--text-primary);">Build smarter. Operate better.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECT REQUEST ==================== -->
+    <section class="section request-section" id="request">
+      <div class="bg-grid"></div>
+      <div class="container relative z-10">
+        <div class="request-grid">
+          <div class="fade-up">
+            <h2>Have a Business Idea?<br>Let’s Build It.</h2>
+            <p style="margin-top:1rem;margin-bottom:1.5rem;">Tell us what you want to build and we’ll help turn it into a working digital system.</p>
+            
+            <ul style="display:flex;flex-direction:column;gap:0.75rem;color:var(--text-muted);">
+              <li style="display:flex;align-items:center;gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-bright)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Clear next steps after you submit
+              </li>
+              <li style="display:flex;align-items:center;gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-bright)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                No obligation consultation
+              </li>
+              <li style="display:flex;align-items:center;gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-bright)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Systems designed around your workflow
+              </li>
+            </ul>
+          </div>
+
+          <!-- THIS FORM CONNECTS TO YOUR SUPABASE -->
+          <form id="project-request-form" class="request-form fade-up">
+            <div class="form-row">
               <div class="form-group">
-                <label for="fullName">Full Name / Business Owner</label>
-                <input type="text" id="fullName" class="form-input" placeholder="e.g. Chidi Okeke" required />
+                <label class="form-label" for="name">Name *</label>
+                <input class="form-input" type="text" id="name" name="name" required placeholder="Your full name">
               </div>
               <div class="form-group">
-                <label for="businessName">Business Name & Industry</label>
-                <input type="text" id="businessName" class="form-input" placeholder="e.g. Nneoma Clothing / Fashion Retail" required />
+                <label class="form-label" for="business_name">Business Name</label>
+                <input class="form-input" type="text" id="business_name" name="business_name" placeholder="Your business">
               </div>
             </div>
 
-            <div class="form-grid-2">
+            <div class="form-row">
               <div class="form-group">
-                <label for="phoneWhatsapp">WhatsApp / Phone Number</label>
-                <input type="tel" id="phoneWhatsapp" class="form-input" placeholder="+234..." required />
+                <label class="form-label" for="email">Email *</label>
+                <input class="form-input" type="email" id="email" name="email" required placeholder="you@example.com">
               </div>
               <div class="form-group">
-                <label for="systemType">Required Core System</label>
-                <select id="systemType" class="form-input" required>
-                  <option value="" disabled selected>Select Primary System Requirement...</option>
-                  <option value="inventory-pos">Retail POS & Stock Tracker Engine</option>
-                  <option value="custom-dashboard">Executive Business Operations Dashboard</option>
-                  <option value="brand-website">High-Conversion Custom Website</option>
-                  <option value="full-suite">Full Quantum OPS Enterprise Suite</option>
+                <label class="form-label" for="phone">Phone / WhatsApp</label>
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="+234 ...">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="business_type">Business Type</label>
+                <select class="form-select" id="business_type" name="business_type">
+                  <option value="">Select type</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Services">Services</option>
+                  <option value="E-commerce">E-commerce</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Agency">Agency</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="budget">Budget Range</label>
+                <select class="form-select" id="budget" name="budget">
+                  <option value="">Select range</option>
+                  <option value="Under $500">Under $500</option>
+                  <option value="$500 – $1,500">$500 – $1,500</option>
+                  <option value="$1,500 – $5,000">$1,500 – $5,000</option>
+                  <option value="$5,000+">$5,000+</option>
+                  <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="projectDetails">Current Operational Needs & Pain Points</label>
-              <textarea id="projectDetails" class="form-input" rows="4" placeholder="Describe how your business currently handles sales, stock, and records, and what you want automated..." required></textarea>
+              <label class="form-label" for="project_type">What do you want to build?</label>
+              <input class="form-input" type="text" id="project_type" name="project_type" placeholder="e.g. Inventory system, website, dashboard...">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg width-full" id="submitBtn">
-              <span>Submit Project Request Direct to Supabase</span>
-            </button>
+            <div class="form-group">
+              <label class="form-label" for="timeline">Timeline</label>
+              <select class="form-select" id="timeline" name="timeline">
+                <option value="">Select timeline</option>
+                <option value="ASAP">ASAP</option>
+                <option value="1–2 weeks">1–2 weeks</option>
+                <option value="1 month">1 month</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Additional Information</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Tell us more about your business and what you need..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Request a Project</button>
+            <div class="form-status" role="alert"></div>
           </form>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- FOOTER SECTION -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
-    <div class="section-container">
+    <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <div class="brand-logo" style="margin-bottom: 1rem;">
-            <div class="logo-icon">QO</div>
-            <span class="logo-text">QUANTUM <span class="accent-text">OPS</span></span>
-          </div>
-          <p class="text-muted" style="font-size: 0.85rem; max-width: 300px;">
-            Engineering high-performance business software, custom operational dashboards, and database-driven solutions.
-          </p>
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <span class="logo-mark">Q</span>
+            <span>Quantum OPS Elite</span>
+          </a>
+          <p>Build smarter. Operate better. Digital systems designed around your business.</p>
         </div>
         <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#flagship">Flagship System</a></li>
-            <li><a href="#services">Solutions</a></li>
-            <li><a href="#portfolio">Live Deployments</a></li>
-          </ul>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#request">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Systems</h4>
-          <ul>
-            <li><a href="#request-project">POS Engines</a></li>
-            <li><a href="#request-project">Executive Dashboards</a></li>
-            <li><a href="#request-project">Custom Integrations</a></li>
-          </ul>
+          <h4>Products</h4>
+          <a href="#products">Business Tracker</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#academy">Academy</a>
         </div>
         <div class="footer-col">
-          <h4>Engineering</h4>
-          <ul>
-            <li><a href="#stack">Supabase Backend</a></li>
-            <li><a href="#stack">Vercel Edge Network</a></li>
-            <li><a href="#stack">Vanilla JS Stack</a></li>
-          </ul>
+          <h4>Solutions</h4>
+          <a href="#solutions">Websites</a>
+          <a href="#solutions">Dashboards</a>
+          <a href="#solutions">Custom Systems</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; Quantum OPS Elite. Operating with 100% verified real-time database architecture.</p>
+        <p>© 2026 Quantum OPS Elite. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/2340000000000?text=Hello%20Quantum%20OPS%20Elite,%20I%20want%20to%20inquire%20about%20a%20custom%20business%20system." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2c-5.517 0-9.997 4.48-9.997 9.998 0 2.149.684 4.14 1.847 5.772l-1.291 4.711 4.832-1.267c1.572.906 3.389 1.42 5.309 1.42 5.518 0 9.998-4.48 9.998-9.998 0-5.518-4.48-9.998-9.998-9.998zm5.823 14.161c-.247.691-1.229 1.282-2.023 1.442-.544.11-1.253.199-3.64-.789-3.053-1.263-5.015-4.364-5.167-4.567-.152-.203-1.233-1.639-1.233-3.125 0-1.486.779-2.217 1.057-2.518.278-.301.608-.376.811-.376.203 0 .406.002.583.011.187.009.439-.071.688.526.248.598.847 2.068.922 2.22.075.152.126.33.025.532-.101.203-.152.329-.304.507-.152.178-.32.398-.456.533-.152.152-.311.317-.134.62.178.303.789 1.297 1.693 2.102 1.163 1.034 2.145 1.354 2.449 1.506.304.152.481.127.659-.076.178-.203.76-.886.963-1.19.203-.304.406-.253.684-.152.278.101 1.768.835 2.072.987.304.152.507.228.583.355.076.127.076.733-.171 1.424z"/></style></svg>
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/?text=Hello%20Quantum%20OPS%20Elite%2C%20I%20would%20like%20to%20discuss%20building%20a%20digital%20solution%20for%20my%20business." 
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <!-- JavaScript Entry Point -->
-  <script type="module" src="js/main.js"></script>
+  <!-- Demo Modal -->
+  <div class="demo-modal">
+    <div class="demo-modal-content">
+      <div class="demo-modal-header">
+        <h3>Quantum OPS Business Tracker <span class="demo-badge">Interactive Demo</span></h3>
+        <button class="demo-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="demo-modal-body">
+        <div class="demo-nav">
+          <button class="demo-nav-btn active" data-panel="dashboard">Dashboard</button>
+          <button class="demo-nav-btn" data-panel="inventory">Inventory</button>
+          <button class="demo-nav-btn" data-panel="products">Products</button>
+          <button class="demo-nav-btn" data-panel="sales">Sales</button>
+          <button class="demo-nav-btn" data-panel="analytics">Analytics</button>
+        </div>
+
+        <div class="demo-panel active" data-panel-content="dashboard">
+          <div class="dash-body" style="grid-template-columns:repeat(3,1fr);">
+            <div class="dash-card">
+              <div class="dash-label">Total Revenue</div>
+              <div class="dash-value accent">₦ 1,284,500</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">Net Profit</div>
+              <div class="dash-value positive">₦ 423,800</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">Orders Today</div>
+              <div class="dash-value">47</div>
+            </div>
+          </div>
+          <p style="margin-top:1.5rem;font-size:0.875rem;color:var(--text-muted);text-align:center;">Sample demo data only</p>
+        </div>
+
+        <div class="demo-panel" data-panel-content="inventory">
+          <div class="dash-card">
+            <div class="dash-label">Inventory Summary (Demo)</div>
+            <div class="dash-mini-list" style="margin-top:1rem;">
+              <div class="dash-mini-item"><span>Total SKUs</span><span>247</span></div>
+              <div class="dash-mini-item"><span>In Stock</span><span>1,642 units</span></div>
+              <div class="dash-mini-item"><span>Low Stock</span><span style="color:var(--warning)">38</span></div>
+              <div class="dash-mini-item"><span>Out of Stock</span><span style="color:var(--danger)">12</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" data-panel-content="products">
+          <div class="dash-card">
+            <div class="dash-label">Products (Demo)</div>
+            <div class="dash-mini-list" style="margin-top:1rem;">
+              <div class="dash-mini-item"><span>Premium Widget A</span><span>₦ 12,500</span></div>
+              <div class="dash-mini-item"><span>Standard Kit B</span><span>₦ 8,200</span></div>
+              <div class="dash-mini-item"><span>Pro Bundle C</span><span>₦ 24,000</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" data-panel-content="sales">
+          <div class="dash-body" style="grid-template-columns:1fr 1fr;">
+            <div class="dash-card">
+              <div class="dash-label">Today’s Sales</div>
+              <div class="dash-value accent">₦ 86,200</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">This Week</div>
+              <div class="dash-value">₦ 412,800</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" data-panel-content="analytics">
+          <div class="dash-body" style="grid-template-columns:1fr 1fr;">
+            <div class="dash-card">
+              <div class="dash-label">Gross Margin</div>
+              <div class="dash-value positive">33%</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-label">Avg. Order Value</div>
+              <div class="dash-value">₦ 18,340</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
