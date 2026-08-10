@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QUANTUM OPS ELITE — Next-Generation Business Software</title>
+  <title>QUANTUM OPS ELITE — Next-Generation Business Operating System</title>
+  
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
   <style>
     :root {
       --bg-primary: #020617;
@@ -14,12 +18,13 @@
       --brand-dark: #0D9488;
       --bright-cyan: #22D3EE;
       --secondary-blue: #3B82F6;
-      --glow-cyan: rgba(20, 184, 166, 0.25);
-      --glow-blue: rgba(59, 130, 246, 0.18);
+      --glow-cyan: rgba(20, 184, 166, 0.35);
+      --glow-blue: rgba(59, 130, 246, 0.25);
       --text-primary: #F8FAFC;
       --text-secondary: #CBD5E1;
       --text-muted: #94A3B8;
-      --border: rgba(148, 163, 184, 0.12);
+      --border: rgba(148, 163, 184, 0.15);
+      --border-glow: rgba(34, 211, 238, 0.3);
     }
 
     * {
@@ -36,7 +41,7 @@
       position: relative;
     }
 
-    /* Ambient Background Layers */
+    /* ATMOSPHERIC BACKGROUND SYSTEM */
     #canvas-bg {
       position: fixed;
       top: 0;
@@ -56,16 +61,17 @@
       z-index: 0;
       pointer-events: none;
       background: 
-        radial-gradient(circle at 20% 20%, var(--glow-cyan) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, var(--glow-blue) 0%, transparent 40%);
-      filter: blur(60px);
-      animation: auroraMove 20s ease-in-out infinite alternate;
+        radial-gradient(circle at 15% 20%, var(--glow-cyan) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, var(--glow-blue) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 60%);
+      filter: blur(70px);
+      animation: auroraBreathe 16s ease-in-out infinite alternate;
     }
 
-    @keyframes auroraMove {
-      0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.1) translate(-2%, 2%); }
-      100% { transform: scale(1) translate(2%, -2%); }
+    @keyframes auroraBreathe {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      50% { transform: scale(1.12) translate(-2%, 2%); opacity: 1; }
+      100% { transform: scale(1) translate(2%, -2%); opacity: 0.85; }
     }
 
     .grid-overlay {
@@ -79,24 +85,19 @@
       background-image: 
         linear-gradient(to right, var(--border) 1px, transparent 1px),
         linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.15;
+      background-size: 50px 50px;
+      opacity: 0.12;
     }
 
-    /* Layout Components */
-    header, section, footer {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Fixed Navigation */
+    /* NAVIGATION BAR */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       height: 80px;
-      background: rgba(2, 6, 23, 0.72);
+      background: rgba(2, 6, 23, 0.75);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -113,8 +114,8 @@
     }
 
     .brand-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       background: linear-gradient(135deg, var(--brand-primary), var(--bright-cyan));
       border-radius: 8px;
       display: flex;
@@ -123,6 +124,7 @@
       font-weight: 800;
       color: var(--bg-primary);
       font-size: 16px;
+      box-shadow: 0 0 15px var(--glow-cyan);
     }
 
     .brand-text {
@@ -152,7 +154,7 @@
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a.active {
       color: var(--bright-cyan);
     }
 
@@ -162,13 +164,13 @@
     }
 
     .btn {
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 10px 22px;
+      border-radius: 8px;
       font-size: 13px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -178,13 +180,13 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
       color: var(--text-primary);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 0 20px var(--glow-cyan);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
-      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
@@ -198,11 +200,13 @@
       color: var(--bright-cyan);
     }
 
-    /* Hero Section */
+    /* HERO SECTION */
     .hero {
-      padding: 160px 20px 80px 20px;
+      position: relative;
+      z-index: 1;
+      padding: 140px 20px 80px 20px;
       text-align: center;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
@@ -211,26 +215,33 @@
       align-items: center;
       gap: 8px;
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 6px 16px;
+      border: 1px solid var(--border-glow);
+      padding: 6px 18px;
       border-radius: 20px;
       font-size: 12px;
       color: var(--bright-cyan);
       margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(20, 184, 166, 0.2);
     }
 
     .badge-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background: var(--bright-cyan);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--bright-cyan);
+      box-shadow: 0 0 10px var(--bright-cyan);
+      animation: pulseGlow 1.8s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      100% { transform: scale(1.3); opacity: 1; }
     }
 
     .hero-title {
-      font-size: 52px;
+      font-size: 54px;
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 24px;
@@ -246,7 +257,7 @@
     .hero-subtitle {
       font-size: 18px;
       color: var(--text-secondary);
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 36px auto;
       line-height: 1.6;
     }
@@ -255,51 +266,232 @@
       display: flex;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
-    /* Dashboard Visual Placeholder/Mockup */
-    .hero-visual {
+    /* WOW HIGH-TECH DASHBOARD BOARD */
+    .dashboard-frame {
       position: relative;
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
       padding: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--glow-cyan);
-      margin-top: 40px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 50px var(--glow-cyan);
+      text-align: left;
+      overflow: hidden;
+      animation: floatDashboard 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatDashboard {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .dash-tabs {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dash-tab {
+      background: rgba(2, 6, 23, 0.6);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dash-tab.active, .dash-tab:hover {
+      background: var(--brand-primary);
+      color: var(--bg-primary);
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 15px var(--glow-cyan);
+    }
+
+    .live-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--bright-cyan);
+      background: rgba(34, 211, 238, 0.1);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+
+    .live-pulse {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10B981;
+      animation: pulseGlow 1s infinite alternate;
     }
 
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
+      margin-bottom: 24px;
     }
 
     .metric-card {
-      background: rgba(2, 6, 23, 0.5);
+      background: rgba(2, 6, 23, 0.7);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      text-align: left;
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .metric-card:hover {
+      border-color: var(--bright-cyan);
+      box-shadow: 0 0 20px var(--glow-cyan);
+      transform: translateY(-2px);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--bright-cyan), transparent);
     }
 
     .metric-label {
       font-size: 12px;
       color: var(--text-muted);
       margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .metric-value {
-      font-size: 20px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--text-primary);
+      transition: color 0.5s ease;
     }
 
-    /* Content Sections */
+    .metric-change {
+      font-size: 12px;
+      color: #10B981;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ANIMATED CANVAS & GRAPH VIEW */
+    .dashboard-visuals {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    .chart-box {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      height: 180px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chart-title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      height: 110px;
+      padding-top: 10px;
+    }
+
+    .bar {
+      flex: 1;
+      background: linear-gradient(0deg, var(--brand-primary), var(--bright-cyan));
+      border-radius: 4px 4px 0 0;
+      transition: height 1s ease;
+      box-shadow: 0 0 10px var(--glow-cyan);
+      position: relative;
+    }
+
+    .bar:hover::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: var(--bright-cyan);
+      background: var(--bg-deep);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    .feed-box {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+    }
+
+    .feed-item:last-child {
+      border: none;
+    }
+
+    .feed-icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bright-cyan);
+      box-shadow: 0 0 8px var(--bright-cyan);
+    }
+
+    /* SERVICES SECTION */
     .section {
+      position: relative;
+      z-index: 1;
       padding: 100px 20px;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
@@ -309,9 +501,10 @@
     }
 
     .section-title {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: 800;
       margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
 
     .section-subtitle {
@@ -329,18 +522,20 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       padding: 32px;
-      border-radius: 12px;
+      border-radius: 14px;
       transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
     }
 
     .service-card:hover {
       border-color: var(--brand-primary);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-cyan);
     }
 
     .service-title {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 12px;
       color: var(--bright-cyan);
     }
@@ -348,10 +543,12 @@
     .service-desc {
       font-size: 14px;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     footer {
+      position: relative;
+      z-index: 1;
       border-top: 1px solid var(--border);
       padding: 40px 20px;
       text-align: center;
@@ -359,11 +556,17 @@
       font-size: 13px;
     }
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 36px; }
+    @media (max-width: 1024px) {
       .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-visuals { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 40px; }
+    }
+
+    @media (max-width: 768px) {
       .nav-links { display: none; }
+      .hero-title { font-size: 32px; }
+      .dashboard-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -372,6 +575,7 @@
   <div class="aurora-bg"></div>
   <div class="grid-overlay"></div>
 
+  <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="nav-brand">
       <div class="brand-icon">QO</div>
@@ -391,43 +595,84 @@
   </nav>
 
   <main>
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="badge">
-        <span class="badge-dot"></span> Next-Generation Business Software
+        <span class="badge-dot"></span> Next-Generation Business Operating System
       </div>
       <h1 class="hero-title">
         WE BUILD DIGITAL SYSTEMS THAT MAKE BUSINESSES RUN <span class="text-gradient">SMARTER.</span>
       </h1>
       <p class="hero-subtitle">
-        Quantum Ops Elite builds powerful business platforms, custom software, intelligent dashboards, and AI-powered digital systems designed around how your business actually operates.
+        Quantum Ops Elite builds powerful business platforms, custom software, intelligent dashboards, and AI-powered digital engines designed around how your business actually operates.
       </p>
       <div class="hero-ctas">
         <a href="platform.html" class="btn btn-primary">EXPLORE QUANTUM OPS</a>
         <a href="contact.html" class="btn btn-secondary">BUILD MY SYSTEM</a>
       </div>
 
-      <div class="hero-visual">
+      <!-- ANIMATED WOW DASHBOARD -->
+      <div class="dashboard-frame">
+        <div class="dashboard-header">
+          <div class="dash-tabs">
+            <button class="dash-tab active" onclick="switchView('overview')">Overview</button>
+            <button class="dash-tab" onclick="switchView('sales')">Sales & Revenue</button>
+            <button class="dash-tab" onclick="switchView('inventory')">Inventory</button>
+            <button class="dash-tab" onclick="switchView('ai')">AI Insights</button>
+          </div>
+          <div class="live-status-pill">
+            <span class="live-pulse"></span> SUPABASE REALTIME LIVE
+          </div>
+        </div>
+
         <div class="dashboard-grid">
           <div class="metric-card">
             <div class="metric-label">Today's Revenue</div>
-            <div class="metric-value">₦2,450,000</div>
+            <div class="metric-value" id="metric-revenue">₦2,450,000</div>
+            <div class="metric-change">↑ +18.4% vs yesterday</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">Sales Growth</div>
-            <div class="metric-value">+18.4%</div>
+            <div class="metric-value" id="metric-growth">+18.4%</div>
+            <div class="metric-change">↑ Expanding momentum</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">Low Stock Alerts</div>
-            <div class="metric-value">3 Items</div>
+            <div class="metric-value" id="metric-low_stock" style="color: #F59E0B;">3 Items</div>
+            <div class="metric-change" style="color: #F59E0B;">⚡ Reorder recommended</div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">AI Insights</div>
-            <div class="metric-value">Optimal</div>
+            <div class="metric-label">AI Status</div>
+            <div class="metric-value" id="metric-ai_status" style="color: var(--bright-cyan);">Optimal</div>
+            <div class="metric-change">✓ Neural model active</div>
+          </div>
+        </div>
+
+        <div class="dashboard-visuals">
+          <div class="chart-box">
+            <div class="chart-title">Real-time Performance Metrics</div>
+            <div class="chart-bars" id="chart-bars">
+              <div class="bar" style="height: 40%;" data-val="40%"></div>
+              <div class="bar" style="height: 65%;" data-val="65%"></div>
+              <div class="bar" style="height: 85%;" data-val="85%"></div>
+              <div class="bar" style="height: 50%;" data-val="50%"></div>
+              <div class="bar" style="height: 95%;" data-val="95%"></div>
+              <div class="bar" style="height: 75%;" data-val="75%"></div>
+              <div class="bar" style="height: 90%;" data-val="90%"></div>
+            </div>
+          </div>
+
+          <div class="feed-box">
+            <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">SYSTEM STREAM</div>
+            <div class="feed-item"><span class="feed-icon"></span> POS Sync Complete</div>
+            <div class="feed-item"><span class="feed-icon"></span> Sales Logged (#1084)</div>
+            <div class="feed-item"><span class="feed-icon"></span> Supabase Realtime Connected</div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES OVERVIEW -->
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">DIGITAL SYSTEMS BUILT AROUND YOUR BUSINESS</h2>
@@ -455,7 +700,59 @@
   </footer>
 
   <script>
-    // Particle network background animation
+    // 1. SUPABASE CLIENT INTEGRATION
+    const SUPABASE_URL = "https://txgsmfceadgircarxclm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_8lWUTNuFdG_PT85PxPTivg_l5op-_km";
+    
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Load initial metrics from Supabase
+    async function loadRealtimeMetrics() {
+      const { data, error } = await supabaseClient.from('metrics').select('*');
+      if (data && data.length > 0) {
+        data.forEach(metric => updateMetricUI(metric.metric_key, metric.value));
+      }
+    }
+
+    // Subscribe to WebSocket changes via Supabase Realtime
+    supabaseClient
+      .channel('public:metrics')
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'metrics' }, (payload) => {
+        const { metric_key, value } = payload.new;
+        updateMetricUI(metric_key, value);
+      })
+      .subscribe();
+
+    function updateMetricUI(key, val) {
+      const el = document.getElementById(`metric-${key}`);
+      if (el) {
+        el.innerText = val;
+        // Trigger glowing update flash
+        el.style.color = '#22D3EE';
+        el.style.textShadow = '0 0 15px #22D3EE';
+        setTimeout(() => {
+          el.style.color = '#F8FAFC';
+          el.style.textShadow = 'none';
+        }, 1200);
+      }
+    }
+
+    loadRealtimeMetrics();
+
+    // 2. DASHBOARD VIEW SWITCHER (WOW Animation)
+    function switchView(type) {
+      document.querySelectorAll('.dash-tab').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const bars = document.querySelectorAll('.bar');
+      bars.forEach(bar => {
+        const randomVal = Math.floor(Math.random() * 60) + 35;
+        bar.style.height = randomVal + '%';
+        bar.setAttribute('data-val', randomVal + '%');
+      });
+    }
+
+    // 3. BACKGROUND CANVAS NEURAL PARTICLE NETWORK
     const canvas = document.getElementById('canvas-bg');
     const ctx = canvas.getContext('2d');
     
@@ -466,17 +763,17 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const particles = Array.from({ length: 40 }, () => ({
+    const particles = Array.from({ length: 45 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 2 + 1
     }));
 
-    function animate() {
+    function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(20, 184, 166, 0.4)';
+      ctx.fillStyle = 'rgba(34, 211, 238, 0.4)';
       ctx.strokeStyle = 'rgba(20, 184, 166, 0.08)';
 
       particles.forEach((p, i) => {
@@ -493,7 +790,7 @@
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < 120) {
+          if (dist < 130) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -502,9 +799,9 @@
         }
       });
 
-      requestAnimationFrame(animate);
+      requestAnimationFrame(animateParticles);
     }
-    animate();
+    animateParticles();
   </script>
 </body>
 </html>
