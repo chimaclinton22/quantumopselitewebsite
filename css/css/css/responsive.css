@@ -1,34 +1,20 @@
-/* ==========================================================================
-   QUANTUM OPS ELITE — RESPONSIVE MEDIA QUERIES & BREAKPOINTS
-   ========================================================================== */
+/* =====================================================
+   QUANTUM OPS ELITE — RESPONSIVE STYLES
+   ===================================================== */
 
-/* --------------------------------------------------------------------------
-   1. TABLET BREAKPOINT (max-width: 1024px)
-   -------------------------------------------------------------------------- */
-@media screen and (max-width: 1024px) {
-  .section-padding {
-    padding: 5rem 1.25rem;
+/* Large tablets / small desktops */
+@media (max-width: 1100px) {
+  .hero-visual {
+    width: 48%;
+    right: -8%;
   }
 
-  .section-title {
-    font-size: 2.15rem;
-  }
-
-  /* Hero Section Adjustment */
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  /* Grid Conversions */
-  .flagship-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .services-grid,
-  .portfolio-grid {
+  .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .tech-grid {
@@ -36,130 +22,223 @@
   }
 
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: 1.5fr repeat(2, 1fr);
   }
 
-  /* Dashboard Visual Adjustments */
-  .dash-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+  .footer-grid .footer-col:nth-child(4),
+  .footer-grid .footer-col:nth-child(5) {
+    grid-column: span 1;
   }
 }
 
-/* --------------------------------------------------------------------------
-   2. MOBILE BREAKPOINT — PHONES & SMALL TABLETS (max-width: 768px)
-   -------------------------------------------------------------------------- */
-@media screen and (max-width: 768px) {
+/* Tablets */
+@media (max-width: 900px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+
+  .section {
+    padding-block: 4rem;
+  }
+
+  .section-lg {
+    padding-block: 5rem;
+  }
+
   /* Navigation */
-  .desktop-nav {
+  .nav-links,
+  .nav-actions {
     display: none;
   }
 
-  .mobile-menu-btn {
-    display: block;
+  .mobile-toggle {
+    display: flex;
   }
 
-  /* Typography & Hero */
-  .hero-section {
-    padding-top: 8rem;
-    padding-bottom: 3.5rem;
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    flex-direction: column;
   }
 
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.25;
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
   }
 
-  .hero-subhead {
-    font-size: 1rem;
+  .hero-desc {
+    margin-inline: auto;
   }
 
-  .hero-description {
-    font-size: 0.98rem;
+  .hero-ctas {
+    justify-content: center;
   }
 
-  .hero-cta-group {
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 3rem auto 0;
+  }
+
+  .dashboard-mock {
+    transform: none;
+  }
+
+  .dashboard-mock:hover {
+    transform: none;
+  }
+
+  /* Flagship */
+  .flagship-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .flagship-features {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Portfolio */
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Request form */
+  .request-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Courses */
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .section {
+    padding-block: 3.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+
+  .btn-lg {
+    padding: 1rem 1.75rem;
+    width: 100%;
+  }
+
+  .hero-ctas {
     flex-direction: column;
     width: 100%;
   }
 
-  .hero-cta-group .btn {
+  .hero-ctas .btn {
     width: 100%;
   }
 
-  /* Grids Stack Vertically */
-  .services-grid,
-  .portfolio-grid,
-  .tech-grid {
+  .services-grid {
     grid-template-columns: 1fr;
   }
 
-  .form-grid-2 {
+  .pillars-grid {
     grid-template-columns: 1fr;
+  }
+
+  .flagship-features {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .request-form {
+    padding: 1.5rem;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
 
-  /* Dashboard Mockup Mobile Optimizations */
-  .dashboard-body {
-    padding: 1rem;
+  .footer-brand {
+    grid-column: span 1;
   }
 
-  .dash-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
-  .dash-card {
-    padding: 0.75rem;
-  }
-
-  .dash-value {
-    font-size: 1.1rem;
-  }
-
-  .chart-bars {
-    height: 90px;
-  }
-
-  .bar {
-    width: 16px;
-  }
-
-  /* Floating WhatsApp Adjustments */
   .whatsapp-float {
     bottom: 1.25rem;
     right: 1.25rem;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
-  .whatsapp-icon {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   3. SMALL MOBILE DEVICES (max-width: 480px)
-   -------------------------------------------------------------------------- */
-@media screen and (max-width: 480px) {
-  .section-padding {
-    padding: 4rem 1rem;
+  .demo-modal-content {
+    max-height: 95vh;
+    border-radius: var(--radius-xl);
   }
 
-  .section-title {
-    font-size: 1.75rem;
-  }
-
-  .dash-grid-4 {
+  .dash-body {
     grid-template-columns: 1fr;
   }
 
-  .badge-pill {
-    font-size: 0.7rem;
+  .dash-card.wide {
+    grid-column: span 1;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .hero-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
