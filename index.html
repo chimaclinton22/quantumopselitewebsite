@@ -262,7 +262,7 @@
             </div>
 
             <!-- Hero Showcase Product Preview -->
-            <div class="mt-16 sm:mt-24 relative max-w-6xl mx-auto">
+            <div class="mt-16 sm:mt-24 relative max-w-4xl mx-auto">
                 <div class="glass-panel rounded-2xl p-2 sm:p-4 border border-slate-700/50 teal-glow">
                     <!-- Window Controls Bar -->
                     <div class="flex items-center justify-between border-b border-slate-800/80 pb-3 px-3 mb-4">
@@ -280,8 +280,8 @@
                     </div>
 
                     <!-- Primary Hero Screenshot -->
-                    <div class="relative rounded-xl overflow-hidden shadow-2xl bg-[#01030A]">
-                        <img src="image_11.png" alt="Quantum Ops Elite Platform Dashboard Preview" class="w-full h-auto object-cover rounded-xl" loading="eager">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl bg-[#01030A] flex justify-center py-4">
+                        <img src="https://i.imgur.com/JnEA8iK.jpeg" alt="Quantum Ops Elite Executive Dashboard Preview" class="max-h-[600px] w-auto object-contain rounded-xl shadow-2xl" loading="eager">
                         
                         <!-- Floating Demo Metric Overlay Badges -->
                         <div class="hidden lg:flex absolute top-6 left-6 glass-panel p-4 rounded-xl border border-teal-500/30 flex-col text-left space-y-1 shadow-2xl animate-bounce" style="animation-duration: 6s;">
@@ -385,14 +385,13 @@
             <!-- PHONE MOCKUP GRID SHOWCASE -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                 
-                <!-- Phone 1: Dashboard -->
+                <!-- Phone 1: Executive Dashboard -->
                 <div class="glass-panel p-4 rounded-3xl border border-slate-700/60 flex flex-col items-center card-hover-glow">
                     <div class="w-full bg-[#01030A] rounded-2xl p-2 border border-slate-800 overflow-hidden shadow-2xl mb-6">
-                        <!-- Top Phone Speaker Bar -->
                         <div class="w-24 h-4 bg-slate-900 rounded-full mx-auto mb-3 flex items-center justify-center">
                             <span class="w-2 h-2 rounded-full bg-slate-800"></span>
                         </div>
-                        <img src="image_11.png" alt="Executive Dashboard Screen" class="w-full h-auto rounded-xl">
+                        <img src="https://i.imgur.com/JnEA8iK.jpeg" alt="Executive Dashboard Screen" class="w-full h-auto rounded-xl max-h-[500px] object-contain mx-auto">
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Executive Dashboard</h3>
                     <p class="text-xs text-slate-400 text-center px-2">
@@ -401,13 +400,13 @@
                     <span class="mt-4 px-3 py-1 rounded-full bg-teal-950 border border-teal-800 text-[10px] font-mono text-teal-400">DEMO DATA</span>
                 </div>
 
-                <!-- Phone 2: Inventory -->
+                <!-- Phone 2: Inventory & Stock Management -->
                 <div class="glass-panel p-4 rounded-3xl border border-slate-700/60 flex flex-col items-center card-hover-glow">
                     <div class="w-full bg-[#01030A] rounded-2xl p-2 border border-slate-800 overflow-hidden shadow-2xl mb-6">
                         <div class="w-24 h-4 bg-slate-900 rounded-full mx-auto mb-3 flex items-center justify-center">
                             <span class="w-2 h-2 rounded-full bg-slate-800"></span>
                         </div>
-                        <img src="image_16.png" alt="Inventory & Stock Management Screen" class="w-full h-auto rounded-xl">
+                        <img src="https://i.imgur.com/nzNS7iQ.jpeg" alt="Inventory & Stock Management Screen" class="w-full h-auto rounded-xl max-h-[500px] object-contain mx-auto">
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Inventory Management</h3>
                     <p class="text-xs text-slate-400 text-center px-2">
@@ -416,13 +415,13 @@
                     <span class="mt-4 px-3 py-1 rounded-full bg-teal-950 border border-teal-800 text-[10px] font-mono text-teal-400">DEMO DATA</span>
                 </div>
 
-                <!-- Phone 3: POS Checkout -->
+                <!-- Phone 3: POS Checkout & Payments -->
                 <div class="glass-panel p-4 rounded-3xl border border-slate-700/60 flex flex-col items-center card-hover-glow">
                     <div class="w-full bg-[#01030A] rounded-2xl p-2 border border-slate-800 overflow-hidden shadow-2xl mb-6">
                         <div class="w-24 h-4 bg-slate-900 rounded-full mx-auto mb-3 flex items-center justify-center">
                             <span class="w-2 h-2 rounded-full bg-slate-800"></span>
                         </div>
-                        <img src="image_15.png" alt="POS & Checkout Module Screen" class="w-full h-auto rounded-xl">
+                        <img src="https://i.imgur.com/A3dXXvE.jpeg" alt="POS & Checkout Module Screen" class="w-full h-auto rounded-xl max-h-[500px] object-contain mx-auto">
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">POS & Multi-Payment</h3>
                     <p class="text-xs text-slate-400 text-center px-2">
@@ -449,13 +448,13 @@
                     <button onclick="switchTab('pos')" id="btn-pos" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white">POS Sales</button>
                     <button onclick="switchTab('cart')" id="btn-cart" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white">Cart System</button>
                     <button onclick="switchTab('checkout')" id="btn-checkout" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white">Checkout</button>
-                    <button onclick="switchTab('stock')" id="btn-stock" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white">Stock Entry</button>
+                    <button onclick="switchTab('analytics')" id="btn-analytics" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white">Analytics</button>
                 </div>
 
                 <!-- Interactive Tab Screen Display -->
                 <div class="relative bg-[#01030A] rounded-xl overflow-hidden border border-slate-800 flex justify-center p-4">
                     <div class="max-w-md w-full">
-                        <img id="tab-image" src="image_11.png" alt="Platform Screenshot View" class="w-full h-auto rounded-lg transition-all duration-300">
+                        <img id="tab-image" src="https://i.imgur.com/JnEA8iK.jpeg" alt="Platform Screenshot View" class="w-full h-auto rounded-lg transition-all duration-300 max-h-[600px] object-contain mx-auto">
                     </div>
                 </div>
             </div>
@@ -602,7 +601,7 @@
             </div>
         </section>
 
-        <!-- How We Build Section -->
+        <!-- Process Section -->
         <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800/60">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-xs font-bold tracking-widest text-[#14B8A6] uppercase">OUR PROCESS</span>
@@ -650,8 +649,8 @@
                 <!-- Project 1: Flagship -->
                 <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 card-hover-glow flex flex-col justify-between">
                     <div>
-                        <div class="bg-slate-950 p-2 border-b border-slate-800">
-                            <img src="image_11.png" alt="Quantum Ops Elite Platform" class="w-full h-48 object-cover rounded-lg">
+                        <div class="bg-slate-950 p-2 border-b border-slate-800 flex justify-center">
+                            <img src="https://i.imgur.com/JnEA8iK.jpeg" alt="Quantum Ops Elite Platform" class="h-48 w-auto object-contain rounded-lg">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
@@ -675,8 +674,8 @@
                 <!-- Project 2: Concept Retail -->
                 <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 card-hover-glow flex flex-col justify-between">
                     <div>
-                        <div class="bg-slate-950 p-2 border-b border-slate-800">
-                            <img src="image_16.png" alt="Retail Command Center Concept" class="w-full h-48 object-cover rounded-lg opacity-80">
+                        <div class="bg-slate-950 p-2 border-b border-slate-800 flex justify-center">
+                            <img src="https://i.imgur.com/nzNS7iQ.jpeg" alt="Retail Command Center Concept" class="h-48 w-auto object-contain rounded-lg">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
@@ -697,20 +696,20 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Concept Fashion -->
+                <!-- Project 3: Concept Analytics -->
                 <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 card-hover-glow flex flex-col justify-between">
                     <div>
-                        <div class="bg-slate-950 p-2 border-b border-slate-800">
-                            <img src="image_12.png" alt="Fashion Business System Concept" class="w-full h-48 object-cover rounded-lg opacity-80">
+                        <div class="bg-slate-950 p-2 border-b border-slate-800 flex justify-center">
+                            <img src="https://i.imgur.com/35tKHs4.jpeg" alt="Operations Analytics Suite Concept" class="h-48 w-auto object-contain rounded-lg">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-xs font-bold text-[#3B82F6]">CONCEPT PROJECT</span>
                                 <span class="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded">DEMO SYSTEM</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Fashion Business System</h3>
+                            <h3 class="text-xl font-bold text-white mb-2">Operations Analytics Suite</h3>
                             <p class="text-slate-400 text-xs leading-relaxed">
-                                A conceptual operational interface tailored for managing high-volume fashion orders and stock variants.
+                                A real-time data analytical dashboard engineered for tracking complex operational KPIs and profit flow.
                             </p>
                         </div>
                     </div>
@@ -873,7 +872,7 @@
         </div>
     </footer>
 
-    <!-- Vanilla JavaScript Integration -->
+    <!-- JavaScript Integration -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -883,7 +882,7 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_8lWUTNuFdG_PT85PxPTivg_l5op-_km';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Mobile Menu Drawer Handler
+        // Mobile Menu Handler
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -898,14 +897,14 @@
             });
         });
 
-        // Interactive Platform Screenshot Tab Switcher
+        // Interactive Tab Switcher mapping direct Imgur URLs
         const tabImages = {
-            dashboard: 'image_11.png',
-            inventory: 'image_16.png',
-            pos: 'image_12.png',
-            cart: 'image_13.png',
-            checkout: 'image_15.png',
-            stock: 'image_14.png'
+            dashboard: 'https://i.imgur.com/JnEA8iK.jpeg',
+            inventory: 'https://i.imgur.com/nzNS7iQ.jpeg',
+            pos: 'https://i.imgur.com/A3dXXvE.jpeg',
+            cart: 'https://i.imgur.com/35tKHs4.jpeg',
+            checkout: 'https://i.imgur.com/R5gPUdm.jpeg',
+            analytics: 'https://i.imgur.com/Ary7z58.jpeg'
         };
 
         function switchTab(key) {
@@ -917,7 +916,7 @@
                 imgElement.style.opacity = '1';
             }, 150);
 
-            // Update Tab Button Styles
+            // Update Tab Button Active Styles
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 hover:text-white';
             });
@@ -928,7 +927,7 @@
             }
         }
 
-        // Supabase Real Form Submission (`project_requests` table)
+        // Supabase Form Submission handler
         const projectForm = document.getElementById('project-form');
         const formStatus = document.getElementById('form-status');
         const submitBtn = document.getElementById('submit-btn');
